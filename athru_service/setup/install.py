@@ -23,7 +23,7 @@ def after_migrate():
 
 
 def sync_custom_fields():
-	path = Path(__file__).resolve().parents[1] / "athru_service" / "custom" / "custom_fields.json"
+	path = Path(__file__).resolve().parent / "custom_fields.json"
 	if not path.exists():
 		return
 	rows = json.loads(path.read_text(encoding="utf-8"))
