@@ -1,0 +1,134 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-09-20 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "service_contract",
+  "installed_equipment",
+  "customer",
+  "column_break_crf_1",
+  "contract_end_date",
+  "status",
+  "followup_date",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "CRF-.YYYY.-.#####",
+   "default": "CRF-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "service_contract",
+   "fieldtype": "Link",
+   "label": "Service Contract",
+   "options": "Service Contract",
+   "reqd": 1
+  },
+  {
+   "fieldname": "installed_equipment",
+   "fieldtype": "Link",
+   "label": "Installed Equipment",
+   "options": "Installed Equipment",
+   "fetch_from": "service_contract.installed_equipment"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "fetch_from": "service_contract.customer"
+  },
+  {
+   "fieldname": "column_break_crf_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contract_end_date",
+   "fieldtype": "Date",
+   "label": "Contract End Date",
+   "fetch_from": "service_contract.end_date"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Open\nContacted\nRenewed\nClosed Lost\nCancelled",
+   "default": "Open"
+  },
+  {
+   "fieldname": "followup_date",
+   "fieldtype": "Date",
+   "label": "Follow-up Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text Editor",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 0,
+ "issingle": 0,
+ "istable": 0,
+ "links": [],
+ "modified": "2026-09-20 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Athru Service",
+ "name": "Contract Renewal Followup",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0
+  },
+  {
+   "role": "Service Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0
+  },
+  {
+   "role": "Service Desk Agent",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 0
+  },
+  {
+   "role": "Service Engineer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 0
+  },
+  {
+   "role": "Service Read Only",
+   "read": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "search_fields": "service_contract,installed_equipment,customer"
+}

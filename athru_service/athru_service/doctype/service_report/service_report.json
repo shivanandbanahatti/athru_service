@@ -1,0 +1,269 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-09-20 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "amended_from",
+  "service_call",
+  "maintenance_visit",
+  "column_break_sr_1",
+  "company",
+  "report_datetime",
+  "service_type",
+  "equipment_section",
+  "installed_equipment",
+  "serial_no",
+  "item_code",
+  "column_break_sr_2",
+  "customer",
+  "activity_start",
+  "activity_end",
+  "problem_section",
+  "problem_description",
+  "problem_codes",
+  "root_cause",
+  "corrective_action",
+  "parts_section",
+  "parts_replaced",
+  "personnel_section",
+  "service_personnel",
+  "customer_feedback",
+  "column_break_sr_3",
+  "satisfaction_rating",
+  "promote_to_problem_record"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "SR-.YYYY.-.#####",
+   "default": "SR-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Service Report",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "service_call",
+   "fieldtype": "Link",
+   "label": "Service Call",
+   "options": "Service Call",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "maintenance_visit",
+   "fieldtype": "Link",
+   "label": "Maintenance Visit",
+   "options": "Maintenance Visit"
+  },
+  {
+   "fieldname": "column_break_sr_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "report_datetime",
+   "fieldtype": "Datetime",
+   "label": "Report Date/Time",
+   "default": "Now",
+   "reqd": 1
+  },
+  {
+   "fieldname": "service_type",
+   "fieldtype": "Select",
+   "label": "Service Type",
+   "options": "\nWarranty\nAMC\nCAMC\nPMC\nBillable"
+  },
+  {
+   "fieldname": "equipment_section",
+   "fieldtype": "Section Break",
+   "label": "Equipment"
+  },
+  {
+   "fieldname": "installed_equipment",
+   "fieldtype": "Link",
+   "label": "Installed Equipment",
+   "options": "Installed Equipment",
+   "fetch_from": "service_call.installed_equipment",
+   "reqd": 1
+  },
+  {
+   "fieldname": "serial_no",
+   "fieldtype": "Link",
+   "label": "Serial No",
+   "options": "Serial No",
+   "fetch_from": "installed_equipment.serial_no",
+   "read_only": 1
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "label": "Item",
+   "options": "Item",
+   "fetch_from": "installed_equipment.item_code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_sr_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "fetch_from": "installed_equipment.customer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "activity_start",
+   "fieldtype": "Datetime",
+   "label": "Activity Start"
+  },
+  {
+   "fieldname": "activity_end",
+   "fieldtype": "Datetime",
+   "label": "Activity End"
+  },
+  {
+   "fieldname": "problem_section",
+   "fieldtype": "Section Break",
+   "label": "Problem & Resolution"
+  },
+  {
+   "fieldname": "problem_description",
+   "fieldtype": "Text Editor",
+   "label": "Problem Description"
+  },
+  {
+   "fieldname": "problem_codes",
+   "fieldtype": "Table",
+   "label": "Problem Codes",
+   "options": "Service Call Problem Code"
+  },
+  {
+   "fieldname": "root_cause",
+   "fieldtype": "Text Editor",
+   "label": "Root Cause"
+  },
+  {
+   "fieldname": "corrective_action",
+   "fieldtype": "Text Editor",
+   "label": "Corrective Action"
+  },
+  {
+   "fieldname": "parts_section",
+   "fieldtype": "Section Break",
+   "label": "Parts Replaced"
+  },
+  {
+   "fieldname": "parts_replaced",
+   "fieldtype": "Table",
+   "label": "Parts Replaced",
+   "options": "Service Report Part"
+  },
+  {
+   "fieldname": "personnel_section",
+   "fieldtype": "Section Break",
+   "label": "Personnel & Feedback"
+  },
+  {
+   "fieldname": "service_personnel",
+   "fieldtype": "Table",
+   "label": "Service Personnel",
+   "options": "Service Personnel"
+  },
+  {
+   "fieldname": "customer_feedback",
+   "fieldtype": "Small Text",
+   "label": "Customer Feedback"
+  },
+  {
+   "fieldname": "column_break_sr_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "satisfaction_rating",
+   "fieldtype": "Select",
+   "label": "Satisfaction Rating",
+   "options": "\n1\n2\n3\n4\n5"
+  },
+  {
+   "fieldname": "promote_to_problem_record",
+   "fieldtype": "Check",
+   "label": "Promote to Problem Record on Submit"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "issingle": 0,
+ "istable": 0,
+ "links": [],
+ "modified": "2026-09-20 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Athru Service",
+ "name": "Service Report",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Service Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Service Desk Agent",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1
+  },
+  {
+   "role": "Service Engineer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1
+  },
+  {
+   "role": "Service Read Only",
+   "read": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "search_fields": "service_call,serial_no,customer,status"
+}

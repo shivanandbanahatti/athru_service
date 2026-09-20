@@ -1,0 +1,202 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-09-20 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "title",
+  "is_active",
+  "column_break_pr_1",
+  "item_code",
+  "product_family",
+  "installed_equipment",
+  "serial_no",
+  "source_section",
+  "source_service_call",
+  "source_service_report",
+  "column_break_pr_2",
+  "resolved_by",
+  "resolved_on",
+  "content_section",
+  "problem_codes",
+  "symptom",
+  "root_cause",
+  "solution",
+  "searchable_text"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "PR-.YYYY.-.#####",
+   "default": "PR-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active",
+   "default": 1
+  },
+  {
+   "fieldname": "column_break_pr_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "label": "Item / Model",
+   "options": "Item",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "product_family",
+   "fieldtype": "Data",
+   "label": "Product Family"
+  },
+  {
+   "fieldname": "installed_equipment",
+   "fieldtype": "Link",
+   "label": "Installed Equipment",
+   "options": "Installed Equipment"
+  },
+  {
+   "fieldname": "serial_no",
+   "fieldtype": "Link",
+   "label": "Serial No",
+   "options": "Serial No"
+  },
+  {
+   "fieldname": "source_section",
+   "fieldtype": "Section Break",
+   "label": "Source"
+  },
+  {
+   "fieldname": "source_service_call",
+   "fieldtype": "Link",
+   "label": "Source Service Call",
+   "options": "Service Call"
+  },
+  {
+   "fieldname": "source_service_report",
+   "fieldtype": "Link",
+   "label": "Source Service Report",
+   "options": "Service Report"
+  },
+  {
+   "fieldname": "column_break_pr_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "resolved_by",
+   "fieldtype": "Link",
+   "label": "Resolved By",
+   "options": "User"
+  },
+  {
+   "fieldname": "resolved_on",
+   "fieldtype": "Date",
+   "label": "Resolved On"
+  },
+  {
+   "fieldname": "content_section",
+   "fieldtype": "Section Break",
+   "label": "Problem Knowledge"
+  },
+  {
+   "fieldname": "problem_codes",
+   "fieldtype": "Table",
+   "label": "Problem Codes",
+   "options": "Service Call Problem Code"
+  },
+  {
+   "fieldname": "symptom",
+   "fieldtype": "Text Editor",
+   "label": "Symptom"
+  },
+  {
+   "fieldname": "root_cause",
+   "fieldtype": "Text Editor",
+   "label": "Root Cause"
+  },
+  {
+   "fieldname": "solution",
+   "fieldtype": "Text Editor",
+   "label": "Solution"
+  },
+  {
+   "fieldname": "searchable_text",
+   "fieldtype": "Long Text",
+   "label": "Searchable Text",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 0,
+ "issingle": 0,
+ "istable": 0,
+ "links": [],
+ "modified": "2026-09-20 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Athru Service",
+ "name": "Problem Record",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0
+  },
+  {
+   "role": "Service Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0
+  },
+  {
+   "role": "Service Desk Agent",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 0
+  },
+  {
+   "role": "Service Engineer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 0
+  },
+  {
+   "role": "Service Read Only",
+   "read": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "title",
+ "search_fields": "title,symptom,root_cause,solution,item_code,serial_no"
+}

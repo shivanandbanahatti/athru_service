@@ -1,0 +1,364 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-09-20 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "status",
+  "column_break_ie_1",
+  "company",
+  "dispatch_date",
+  "commissioning_date",
+  "customer_section",
+  "customer",
+  "customer_name",
+  "column_break_ie_2",
+  "site_address",
+  "contact_person",
+  "contact_phone",
+  "equipment_section",
+  "item_code",
+  "item_name",
+  "product_family",
+  "column_break_ie_3",
+  "serial_no",
+  "project",
+  "commercial_section",
+  "sales_order",
+  "delivery_note",
+  "column_break_ie_4",
+  "sales_invoice",
+  "warranty_section",
+  "under_warranty",
+  "warranty_expiry_date",
+  "column_break_ie_5",
+  "current_service_contract",
+  "maintenance_status",
+  "documents_section",
+  "user_manual",
+  "installation_acceptance_certificate",
+  "column_break_ie_6",
+  "other_attachments",
+  "history_tab",
+  "lifetime_history_html",
+  "notes_section",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "IE-.YYYY.-.#####",
+   "default": "IE-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nDispatched\nDelivered\nInstallation In Progress\nCommissioned\nActive\nDecommissioned\nTransferred",
+   "default": "Draft",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "column_break_ie_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "dispatch_date",
+   "fieldtype": "Date",
+   "label": "Dispatch Date"
+  },
+  {
+   "fieldname": "commissioning_date",
+   "fieldtype": "Date",
+   "label": "Commissioning Date"
+  },
+  {
+   "fieldname": "customer_section",
+   "fieldtype": "Section Break",
+   "label": "Customer & Site"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "fetch_from": "customer.customer_name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ie_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "site_address",
+   "fieldtype": "Link",
+   "label": "Site Address",
+   "options": "Address"
+  },
+  {
+   "fieldname": "contact_person",
+   "fieldtype": "Link",
+   "label": "Contact Person",
+   "options": "Contact"
+  },
+  {
+   "fieldname": "contact_phone",
+   "fieldtype": "Data",
+   "label": "Contact Phone"
+  },
+  {
+   "fieldname": "equipment_section",
+   "fieldtype": "Section Break",
+   "label": "Equipment Identity"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "label": "Item",
+   "options": "Item",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name",
+   "fetch_from": "item_code.item_name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "product_family",
+   "fieldtype": "Data",
+   "label": "Product Family",
+   "fetch_from": "item_code.custom_product_family"
+  },
+  {
+   "fieldname": "column_break_ie_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "serial_no",
+   "fieldtype": "Link",
+   "label": "Serial No",
+   "options": "Serial No",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "commercial_section",
+   "fieldtype": "Section Break",
+   "label": "Commercial References"
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order"
+  },
+  {
+   "fieldname": "delivery_note",
+   "fieldtype": "Link",
+   "label": "Delivery Note",
+   "options": "Delivery Note"
+  },
+  {
+   "fieldname": "column_break_ie_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "options": "Sales Invoice"
+  },
+  {
+   "fieldname": "warranty_section",
+   "fieldtype": "Section Break",
+   "label": "Warranty & Contract"
+  },
+  {
+   "fieldname": "under_warranty",
+   "fieldtype": "Check",
+   "label": "Under Warranty"
+  },
+  {
+   "fieldname": "warranty_expiry_date",
+   "fieldtype": "Date",
+   "label": "Warranty Expiry Date"
+  },
+  {
+   "fieldname": "column_break_ie_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "current_service_contract",
+   "fieldtype": "Link",
+   "label": "Current Service Contract",
+   "options": "Service Contract"
+  },
+  {
+   "fieldname": "maintenance_status",
+   "fieldtype": "Data",
+   "label": "Maintenance Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "documents_section",
+   "fieldtype": "Section Break",
+   "label": "Documents"
+  },
+  {
+   "fieldname": "user_manual",
+   "fieldtype": "Attach",
+   "label": "User Manual"
+  },
+  {
+   "fieldname": "installation_acceptance_certificate",
+   "fieldtype": "Attach",
+   "label": "Installation Acceptance Certificate"
+  },
+  {
+   "fieldname": "column_break_ie_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "other_attachments",
+   "fieldtype": "Attach",
+   "label": "Other Attachments"
+  },
+  {
+   "fieldname": "history_tab",
+   "fieldtype": "Tab Break",
+   "label": "Lifetime History"
+  },
+  {
+   "fieldname": "lifetime_history_html",
+   "fieldtype": "HTML",
+   "label": "Lifetime History"
+  },
+  {
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text Editor",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 0,
+ "issingle": 0,
+ "istable": 0,
+ "links": [
+  {
+   "link_doctype": "Equipment Activity",
+   "link_fieldname": "installed_equipment"
+  },
+  {
+   "link_doctype": "Service Call",
+   "link_fieldname": "installed_equipment"
+  },
+  {
+   "link_doctype": "Service Report",
+   "link_fieldname": "installed_equipment"
+  },
+  {
+   "link_doctype": "Service Contract",
+   "link_fieldname": "installed_equipment"
+  },
+  {
+   "link_doctype": "Problem Record",
+   "link_fieldname": "installed_equipment"
+  },
+  {
+   "link_doctype": "Checklist Response",
+   "link_fieldname": "installed_equipment"
+  }
+ ],
+ "modified": "2026-09-20 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Athru Service",
+ "name": "Installed Equipment",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0
+  },
+  {
+   "role": "Service Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0
+  },
+  {
+   "role": "Service Desk Agent",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 0
+  },
+  {
+   "role": "Service Engineer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 0
+  },
+  {
+   "role": "Service Read Only",
+   "read": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "serial_no",
+ "search_fields": "serial_no,item_code,customer,project,status"
+}

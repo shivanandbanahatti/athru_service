@@ -1,0 +1,110 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-09-20 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "call_section",
+  "call_intake_mode",
+  "service_call_naming",
+  "column_break_settings_1",
+  "central_desk_role",
+  "renewal_lead_days",
+  "defaults_section",
+  "default_company"
+ ],
+ "fields": [
+  {
+   "fieldname": "call_section",
+   "fieldtype": "Section Break",
+   "label": "Service Call"
+  },
+  {
+   "fieldname": "call_intake_mode",
+   "fieldtype": "Select",
+   "label": "Call Intake Mode",
+   "options": "Any Service User\nCentral Desk Only",
+   "default": "Any Service User"
+  },
+  {
+   "fieldname": "service_call_naming",
+   "fieldtype": "Data",
+   "label": "Service Call Naming",
+   "default": "YYMMDD-##",
+   "description": "Use YYMMDD-## for daily reverse-date numbering"
+  },
+  {
+   "fieldname": "column_break_settings_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "central_desk_role",
+   "fieldtype": "Link",
+   "label": "Central Desk Role",
+   "options": "Role",
+   "default": "Service Desk Agent"
+  },
+  {
+   "fieldname": "renewal_lead_days",
+   "fieldtype": "Int",
+   "label": "Contract Renewal Lead Days",
+   "default": 30
+  },
+  {
+   "fieldname": "defaults_section",
+   "fieldtype": "Section Break",
+   "label": "Defaults"
+  },
+  {
+   "fieldname": "default_company",
+   "fieldtype": "Link",
+   "label": "Default Company",
+   "options": "Company"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 0,
+ "issingle": 1,
+ "istable": 0,
+ "links": [],
+ "modified": "2026-09-20 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Athru Service",
+ "name": "Athru Service Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Service Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Service Desk Agent",
+   "read": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Service Engineer",
+   "read": 1
+  },
+  {
+   "role": "Service Read Only",
+   "read": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

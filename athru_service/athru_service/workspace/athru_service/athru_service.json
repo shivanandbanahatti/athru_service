@@ -1,0 +1,224 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Athru Service</span>\",\"col\":12}},{\"id\":\"sc\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Call\",\"col\":3}},{\"id\":\"ie\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Installed Equipment\",\"col\":3}},{\"id\":\"ea\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Equipment Activity\",\"col\":3}},{\"id\":\"sr\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Report\",\"col\":3}},{\"id\":\"scon\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Contract\",\"col\":3}},{\"id\":\"pr\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Problem Record\",\"col\":3}},{\"id\":\"pc\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Problem Code\",\"col\":3}},{\"id\":\"settings\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Athru Service Settings\",\"col\":3}}]",
+ "creation": "2026-09-20 12:00:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "tool",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Athru Service",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Operations",
+   "link_count": 4,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Installed Equipment",
+   "link_count": 0,
+   "link_to": "Installed Equipment",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Equipment Activity",
+   "link_count": 0,
+   "link_to": "Equipment Activity",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Service Call",
+   "link_count": 0,
+   "link_to": "Service Call",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Service Report",
+   "link_count": 0,
+   "link_to": "Service Report",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Contracts & Knowledge",
+   "link_count": 3,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Service Contract",
+   "link_count": 0,
+   "link_to": "Service Contract",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Problem Code",
+   "link_count": 0,
+   "link_to": "Problem Code",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Problem Record",
+   "link_count": 0,
+   "link_to": "Problem Record",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Configuration",
+   "link_count": 4,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Athru Service Settings",
+   "link_count": 0,
+   "link_to": "Athru Service Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Equipment Activity Type",
+   "link_count": 0,
+   "link_to": "Equipment Activity Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Service Call Type",
+   "link_count": 0,
+   "link_to": "Service Call Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Checklist Template",
+   "link_count": 0,
+   "link_to": "Checklist Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-09-20 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Athru Service",
+ "name": "Athru Service",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [],
+ "sequence_id": 1.0,
+ "shortcuts": [
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "label": "Service Call",
+   "link_to": "Service Call",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Installed Equipment",
+   "link_to": "Installed Equipment",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "List",
+   "label": "Equipment Activity",
+   "link_to": "Equipment Activity",
+   "type": "DocType"
+  },
+  {
+   "color": "Cyan",
+   "doc_view": "List",
+   "label": "Service Report",
+   "link_to": "Service Report",
+   "type": "DocType"
+  },
+  {
+   "color": "Purple",
+   "doc_view": "List",
+   "label": "Service Contract",
+   "link_to": "Service Contract",
+   "type": "DocType"
+  },
+  {
+   "color": "Gray",
+   "doc_view": "List",
+   "label": "Problem Record",
+   "link_to": "Problem Record",
+   "type": "DocType"
+  },
+  {
+   "color": "Gray",
+   "doc_view": "List",
+   "label": "Problem Code",
+   "link_to": "Problem Code",
+   "type": "DocType"
+  },
+  {
+   "color": "Gray",
+   "doc_view": "",
+   "label": "Athru Service Settings",
+   "link_to": "Athru Service Settings",
+   "type": "DocType"
+  }
+ ],
+ "title": "Athru Service"
+}

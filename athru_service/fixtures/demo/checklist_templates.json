@@ -1,0 +1,39 @@
+{
+  "checklist_templates": [
+    {
+      "template_name": "Pre-Install Site Readiness",
+      "purpose": "Pre-Install",
+      "version": "1.0",
+      "items": [
+        {"section": "Site", "question": "Floor leveling completed", "field_type": "Check", "is_required": 1},
+        {"section": "Site", "question": "Power supply available as per spec", "field_type": "Check", "is_required": 1},
+        {"section": "Site", "question": "Access path clear for equipment", "field_type": "Check", "is_required": 1},
+        {"section": "Docs", "question": "Site photos attached", "field_type": "Attach", "is_required": 0}
+      ]
+    },
+    {
+      "template_name": "Installation Commissioning",
+      "purpose": "Commissioning",
+      "version": "1.0",
+      "items": [
+        {"section": "Mechanical", "question": "Equipment positioned and anchored", "field_type": "Check", "is_required": 1},
+        {"section": "Electrical", "question": "Wiring and earthing verified", "field_type": "Check", "is_required": 1},
+        {"section": "Functional", "question": "Idle / dry run completed", "field_type": "Check", "is_required": 1},
+        {"section": "Functional", "question": "Sample production trial OK", "field_type": "Check", "is_required": 1},
+        {"section": "Handover", "question": "Operator basic training done", "field_type": "Check", "is_required": 1}
+      ]
+    },
+    {
+      "template_name": "Preventive Maintenance Standard",
+      "purpose": "PM",
+      "version": "1.0",
+      "items": [
+        {"section": "Inspection", "question": "Visual inspection completed", "field_type": "Check", "is_required": 1},
+        {"section": "Inspection", "question": "Consumables checked / replaced", "field_type": "Check", "is_required": 1},
+        {"section": "Inspection", "question": "Safety interlocks tested", "field_type": "Check", "is_required": 1},
+        {"section": "Notes", "question": "Observations", "field_type": "Data", "is_required": 0}
+      ]
+    }
+  ],
+  "demo_notes": "Neutral demo definitions only. Load via athru_service.setup.demo.load_demo_seed on a development site. Do not include customer or OEM brand names."
+}

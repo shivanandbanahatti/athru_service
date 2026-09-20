@@ -1,0 +1,321 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-09-20 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "service_call_number",
+  "call_date",
+  "call_type",
+  "column_break_sc_1",
+  "status",
+  "priority",
+  "company",
+  "equipment_section",
+  "installed_equipment",
+  "serial_no",
+  "item_code",
+  "column_break_sc_2",
+  "customer",
+  "project",
+  "service_contract",
+  "warranty_status",
+  "complaint_section",
+  "complainant",
+  "complainant_phone",
+  "column_break_sc_3",
+  "received_by",
+  "complaint",
+  "problem_codes",
+  "assignment_section",
+  "service_personnel",
+  "action_taken",
+  "resolution_summary",
+  "links_section",
+  "maintenance_visit",
+  "service_report",
+  "column_break_sc_4",
+  "sla_due",
+  "resolved_on"
+ ],
+ "fields": [
+  {
+   "fieldname": "service_call_number",
+   "fieldtype": "Data",
+   "label": "Service Call Number",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "call_date",
+   "fieldtype": "Datetime",
+   "label": "Call Date",
+   "reqd": 1,
+   "default": "Now",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "call_type",
+   "fieldtype": "Link",
+   "label": "Call Type",
+   "options": "Service Call Type",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "column_break_sc_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Open\nAssigned\nScheduled\nIn Progress\nResolved\nClosed\nCancelled",
+   "default": "Open",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "label": "Priority",
+   "options": "Low\nMedium\nHigh\nCritical",
+   "default": "Medium"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "equipment_section",
+   "fieldtype": "Section Break",
+   "label": "Equipment"
+  },
+  {
+   "fieldname": "installed_equipment",
+   "fieldtype": "Link",
+   "label": "Installed Equipment",
+   "options": "Installed Equipment",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "serial_no",
+   "fieldtype": "Link",
+   "label": "Serial No",
+   "options": "Serial No",
+   "fetch_from": "installed_equipment.serial_no",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "label": "Item",
+   "options": "Item",
+   "fetch_from": "installed_equipment.item_code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_sc_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "fetch_from": "installed_equipment.customer",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project",
+   "fetch_from": "installed_equipment.project",
+   "read_only": 1
+  },
+  {
+   "fieldname": "service_contract",
+   "fieldtype": "Link",
+   "label": "Service Contract",
+   "options": "Service Contract",
+   "fetch_from": "installed_equipment.current_service_contract"
+  },
+  {
+   "fieldname": "warranty_status",
+   "fieldtype": "Data",
+   "label": "Warranty Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "complaint_section",
+   "fieldtype": "Section Break",
+   "label": "Complaint"
+  },
+  {
+   "fieldname": "complainant",
+   "fieldtype": "Data",
+   "label": "Complainant",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "complainant_phone",
+   "fieldtype": "Data",
+   "label": "Complainant Phone"
+  },
+  {
+   "fieldname": "column_break_sc_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "received_by",
+   "fieldtype": "Link",
+   "label": "Received By",
+   "options": "User",
+   "default": "__user"
+  },
+  {
+   "fieldname": "complaint",
+   "fieldtype": "Small Text",
+   "label": "Complaint",
+   "reqd": 1
+  },
+  {
+   "fieldname": "problem_codes",
+   "fieldtype": "Table",
+   "label": "Problem Codes",
+   "options": "Service Call Problem Code"
+  },
+  {
+   "fieldname": "assignment_section",
+   "fieldtype": "Section Break",
+   "label": "Assignment & Action"
+  },
+  {
+   "fieldname": "service_personnel",
+   "fieldtype": "Table",
+   "label": "Service Personnel",
+   "options": "Service Personnel"
+  },
+  {
+   "fieldname": "action_taken",
+   "fieldtype": "Text Editor",
+   "label": "Action Taken"
+  },
+  {
+   "fieldname": "resolution_summary",
+   "fieldtype": "Small Text",
+   "label": "Resolution Summary"
+  },
+  {
+   "fieldname": "links_section",
+   "fieldtype": "Section Break",
+   "label": "Linked Documents"
+  },
+  {
+   "fieldname": "maintenance_visit",
+   "fieldtype": "Link",
+   "label": "Maintenance Visit",
+   "options": "Maintenance Visit"
+  },
+  {
+   "fieldname": "service_report",
+   "fieldtype": "Link",
+   "label": "Service Report",
+   "options": "Service Report",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_sc_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sla_due",
+   "fieldtype": "Datetime",
+   "label": "SLA Due"
+  },
+  {
+   "fieldname": "resolved_on",
+   "fieldtype": "Datetime",
+   "label": "Resolved On"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 0,
+ "issingle": 0,
+ "istable": 0,
+ "links": [
+  {
+   "link_doctype": "Service Report",
+   "link_fieldname": "service_call"
+  },
+  {
+   "link_doctype": "Equipment Activity",
+   "link_fieldname": "service_call"
+  },
+  {
+   "link_doctype": "Checklist Response",
+   "link_fieldname": "service_call"
+  }
+ ],
+ "modified": "2026-09-20 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Athru Service",
+ "name": "Service Call",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0
+  },
+  {
+   "role": "Service Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0
+  },
+  {
+   "role": "Service Desk Agent",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 0
+  },
+  {
+   "role": "Service Engineer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 0
+  },
+  {
+   "role": "Service Read Only",
+   "read": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "title_field": "complaint",
+ "search_fields": "service_call_number,serial_no,customer,status,call_type"
+}

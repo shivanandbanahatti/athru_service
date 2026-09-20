@@ -1,0 +1,15 @@
+.DS_Store
+*.pyc
+*.egg-info
+*.swp
+tags
+node_modules
+__pycache__
+dist/
+*.py[cod]
+*$py.class
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+.env
+.venv/

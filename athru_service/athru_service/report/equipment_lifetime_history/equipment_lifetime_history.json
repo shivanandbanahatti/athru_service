@@ -1,0 +1,29 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2026-09-20 12:00:00.000000",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{}",
+ "letter_head": "",
+ "modified": "2026-09-20 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Athru Service",
+ "name": "Equipment Lifetime History",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Installed Equipment",
+ "report_name": "Equipment Lifetime History",
+ "report_type": "Script Report",
+ "roles": [
+  {"role": "System Manager"},
+  {"role": "Service Manager"},
+  {"role": "Service Desk Agent"},
+  {"role": "Service Engineer"},
+  {"role": "Service Read Only"}
+ ]
+}

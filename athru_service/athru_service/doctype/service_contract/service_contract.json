@@ -1,0 +1,230 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-09-20 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "amended_from",
+  "contract_type",
+  "status",
+  "column_break_scon_1",
+  "company",
+  "start_date",
+  "end_date",
+  "equipment_section",
+  "installed_equipment",
+  "serial_no",
+  "item_code",
+  "column_break_scon_2",
+  "customer",
+  "quotation",
+  "sales_order",
+  "entitlement_section",
+  "included_pm_visits",
+  "included_emergency_visits",
+  "column_break_scon_3",
+  "response_time_hours",
+  "coverage_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "SC-.YYYY.-.#####",
+   "default": "SC-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Service Contract",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "contract_type",
+   "fieldtype": "Select",
+   "label": "Contract Type",
+   "options": "AMC\nCAMC\nPMC\nExtended Warranty",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nActive\nExpired\nCancelled",
+   "default": "Draft",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_scon_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "equipment_section",
+   "fieldtype": "Section Break",
+   "label": "Equipment"
+  },
+  {
+   "fieldname": "installed_equipment",
+   "fieldtype": "Link",
+   "label": "Installed Equipment",
+   "options": "Installed Equipment",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "serial_no",
+   "fieldtype": "Link",
+   "label": "Serial No",
+   "options": "Serial No",
+   "fetch_from": "installed_equipment.serial_no",
+   "read_only": 1
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "label": "Item",
+   "options": "Item",
+   "fetch_from": "installed_equipment.item_code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_scon_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "fetch_from": "installed_equipment.customer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "quotation",
+   "fieldtype": "Link",
+   "label": "Quotation",
+   "options": "Quotation"
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order"
+  },
+  {
+   "fieldname": "entitlement_section",
+   "fieldtype": "Section Break",
+   "label": "Entitlements"
+  },
+  {
+   "fieldname": "included_pm_visits",
+   "fieldtype": "Int",
+   "label": "Included PM Visits",
+   "default": 0
+  },
+  {
+   "fieldname": "included_emergency_visits",
+   "fieldtype": "Int",
+   "label": "Included Emergency Visits",
+   "default": 0
+  },
+  {
+   "fieldname": "column_break_scon_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "response_time_hours",
+   "fieldtype": "Float",
+   "label": "Response Time (Hours)"
+  },
+  {
+   "fieldname": "coverage_notes",
+   "fieldtype": "Text Editor",
+   "label": "Coverage Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "issingle": 0,
+ "istable": 0,
+ "links": [],
+ "modified": "2026-09-20 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Athru Service",
+ "name": "Service Contract",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Service Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Service Desk Agent",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1
+  },
+  {
+   "role": "Service Engineer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1
+  },
+  {
+   "role": "Service Read Only",
+   "read": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "search_fields": "installed_equipment,customer,contract_type,status"
+}
