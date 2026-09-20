@@ -18,21 +18,22 @@
   {
    "fieldname": "call_section",
    "fieldtype": "Section Break",
-   "label": "Service Call"
+   "label": "Service Request"
   },
   {
    "fieldname": "call_intake_mode",
    "fieldtype": "Select",
-   "label": "Call Intake Mode",
+   "label": "Service Request Intake Mode",
    "options": "Any Service User\nCentral Desk Only",
-   "default": "Any Service User"
+   "default": "Any Service User",
+   "description": "Applies to HD Ticket (Service Request) intake guidance"
   },
   {
    "fieldname": "service_call_naming",
    "fieldtype": "Data",
-   "label": "Service Call Naming",
+   "label": "Service Request Number Format",
    "default": "YYMMDD-##",
-   "description": "Use YYMMDD-## for daily reverse-date numbering"
+   "description": "Display number on HD Ticket (custom_service_request_number)"
   },
   {
    "fieldname": "column_break_settings_1",

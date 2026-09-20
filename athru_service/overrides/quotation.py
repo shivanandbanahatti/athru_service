@@ -9,8 +9,8 @@ from frappe.utils import add_years, getdate
 def on_submit(doc, method=None):
 	if not getattr(doc, "custom_is_service_contract", None):
 		return
-	ie = getattr(doc, "custom_installed_equipment", None)
-	if not ie:
+	mi = getattr(doc, "custom_machine_installation", None)
+	if not mi:
 		return
 	if frappe.db.exists("Service Contract", {"quotation": doc.name, "docstatus": ["<", 2]}):
 		return
@@ -20,8 +20,7 @@ def on_submit(doc, method=None):
 		{
 			"doctype": "Service Contract",
 			"company": doc.company,
-			"customer": doc.party_name if doc.quotation_to == "Customer" else None,
-			"installed_equipment": ie,
+			"machine_installation": mi,
 			"quotation": doc.name,
 			"contract_type": getattr(doc, "custom_contract_type", None) or "AMC",
 			"start_date": start,
@@ -31,7 +30,5 @@ def on_submit(doc, method=None):
 			"coverage_notes": doc.terms,
 		}
 	)
-	# customer field is fetched; set explicitly if needed
-	if not contract.customer:
-		contract.customer = frappe.db.get_value("Installed Equipment", ie, "customer")
+	contract.customer = frappe.db.get_value("Machine Installation", mi, "customer")
 	contract.insert(ignore_permissions=True)

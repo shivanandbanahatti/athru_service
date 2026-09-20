@@ -8,7 +8,7 @@
  "field_order": [
   "naming_series",
   "service_contract",
-  "installed_equipment",
+  "machine_installation",
   "customer",
   "column_break_crf_1",
   "contract_end_date",
@@ -33,11 +33,11 @@
    "reqd": 1
   },
   {
-   "fieldname": "installed_equipment",
+   "fieldname": "machine_installation",
    "fieldtype": "Link",
-   "label": "Installed Equipment",
-   "options": "Installed Equipment",
-   "fetch_from": "service_contract.installed_equipment"
+   "label": "Machine Installation",
+   "options": "Machine Installation",
+   "fetch_from": "service_contract.machine_installation"
   },
   {
    "fieldname": "customer",
@@ -130,5 +130,5 @@
  "sort_order": "DESC",
  "states": [],
  "track_changes": 1,
- "search_fields": "service_contract,installed_equipment,customer"
+ "search_fields": "service_contract,machine_installation,customer"
 }

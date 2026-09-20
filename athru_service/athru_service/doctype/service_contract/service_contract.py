@@ -18,22 +18,21 @@ class ServiceContract(Document):
 
 	def on_submit(self):
 		self.db_set("status", "Active")
-		if self.installed_equipment:
+		if self.machine_installation:
 			frappe.db.set_value(
-				"Installed Equipment",
-				self.installed_equipment,
+				"Machine Installation",
+				self.machine_installation,
 				"current_service_contract",
 				self.name,
 			)
-			# Refresh maintenance status
-			ie = frappe.get_doc("Installed Equipment", self.installed_equipment)
-			ie.set_maintenance_status()
+			mi = frappe.get_doc("Machine Installation", self.machine_installation)
+			mi.set_maintenance_status()
 			frappe.db.set_value(
-				"Installed Equipment",
-				self.installed_equipment,
+				"Machine Installation",
+				self.machine_installation,
 				{
-					"maintenance_status": ie.maintenance_status,
-					"under_warranty": ie.under_warranty,
+					"maintenance_status": mi.maintenance_status,
+					"under_warranty": mi.under_warranty,
 				},
 				update_modified=False,
 			)
@@ -41,14 +40,14 @@ class ServiceContract(Document):
 
 	def on_cancel(self):
 		self.db_set("status", "Cancelled")
-		if self.installed_equipment:
+		if self.machine_installation:
 			current = frappe.db.get_value(
-				"Installed Equipment", self.installed_equipment, "current_service_contract"
+				"Machine Installation", self.machine_installation, "current_service_contract"
 			)
 			if current == self.name:
 				frappe.db.set_value(
-					"Installed Equipment",
-					self.installed_equipment,
+					"Machine Installation",
+					self.machine_installation,
 					"current_service_contract",
 					None,
 				)
@@ -57,7 +56,9 @@ class ServiceContract(Document):
 		if not self.serial_no:
 			return
 		if frappe.db.has_column("Serial No", "amc_expiry_date"):
-			frappe.db.set_value("Serial No", self.serial_no, "amc_expiry_date", self.end_date, update_modified=False)
+			frappe.db.set_value(
+				"Serial No", self.serial_no, "amc_expiry_date", self.end_date, update_modified=False
+			)
 
 
 def validate(doc, method=None):
@@ -73,14 +74,13 @@ def on_cancel(doc, method=None):
 
 
 def create_renewal_followups():
-	"""Daily: open Contract Renewal Followup N days before expiry."""
 	settings = frappe.get_single("Athru Service Settings")
 	lead = settings.renewal_lead_days or 30
 	target = add_days(nowdate(), lead)
 	contracts = frappe.get_all(
 		"Service Contract",
 		filters={"docstatus": 1, "status": "Active", "end_date": target},
-		fields=["name", "installed_equipment", "customer", "end_date"],
+		fields=["name", "machine_installation", "customer", "end_date"],
 	)
 	for row in contracts:
 		exists = frappe.db.exists(
@@ -93,7 +93,7 @@ def create_renewal_followups():
 			{
 				"doctype": "Contract Renewal Followup",
 				"service_contract": row.name,
-				"installed_equipment": row.installed_equipment,
+				"machine_installation": row.machine_installation,
 				"customer": row.customer,
 				"contract_end_date": row.end_date,
 				"followup_date": nowdate(),
@@ -101,7 +101,6 @@ def create_renewal_followups():
 			}
 		).insert(ignore_permissions=True)
 
-	# Mark expired
 	frappe.db.sql(
 		"""
 		update `tabService Contract`

@@ -6,7 +6,7 @@
  "doc_type": "Service Report",
  "docstatus": 0,
  "doctype": "Print Format",
- "html": "<div style=\"font-family: sans-serif;\">\n  <h2>{{ doc.company or \"\" }} — Service Report</h2>\n  <p><b>Report:</b> {{ doc.name }} &nbsp; <b>Service Call:</b> {{ doc.service_call }}</p>\n  <p><b>Customer:</b> {{ doc.customer }} &nbsp; <b>Serial No:</b> {{ doc.serial_no }}</p>\n  <p><b>Service Type:</b> {{ doc.service_type or \"\" }}</p>\n  <h3>Problem Description</h3>\n  <div>{{ doc.problem_description or \"\" }}</div>\n  <h3>Root Cause</h3>\n  <div>{{ doc.root_cause or \"\" }}</div>\n  <h3>Corrective Action</h3>\n  <div>{{ doc.corrective_action or \"\" }}</div>\n  {% if doc.parts_replaced %}\n  <h3>Parts Replaced</h3>\n  <ul>{% for p in doc.parts_replaced %}<li>{{ p.item_code }} × {{ p.qty }}</li>{% endfor %}</ul>\n  {% endif %}\n</div>",
+ "html": "<div style=\"font-family: sans-serif;\">\n  <h2>{{ doc.company or \"\" }} — Service Report</h2>\n  <p><b>Report:</b> {{ doc.name }} &nbsp; <b>Service Request:</b> {{ doc.hd_ticket }}</p>\n  <p><b>Customer:</b> {{ doc.customer }} &nbsp; <b>Serial No:</b> {{ doc.serial_no }}</p>\n  <p><b>Service Type:</b> {{ doc.service_type or \"\" }}</p>\n  <h3>Problem Description</h3>\n  <div>{{ doc.problem_description or \"\" }}</div>\n  <h3>Root Cause</h3>\n  <div>{{ doc.root_cause or \"\" }}</div>\n  <h3>Corrective Action</h3>\n  <div>{{ doc.corrective_action or \"\" }}</div>\n  {% if doc.parts_replaced %}\n  <h3>Parts Replaced</h3>\n  <ul>{% for p in doc.parts_replaced %}<li>{{ p.item_code }} × {{ p.qty }}</li>{% endfor %}</ul>\n  {% endif %}\n</div>",
  "idx": 0,
  "modified": "2026-09-20 12:00:00.000000",
  "modified_by": "Administrator",

@@ -1,0 +1,23 @@
+{% extends "templates/web.html" %}
+
+{% block title %}{{ _("Athru Service") }}{% endblock %}
+
+{% block page_content %}
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<div id="app"></div>
+<script>
+  window.csrf_token = "{{ csrf_token }}";
+</script>
+<script type="module" src="/assets/athru_service/frontend/athru_service.js"></script>
+{% endblock %}
+
+{% block style %}
+<style>
+  .navbar, .web-footer, .page-header-wrapper { display: none !important; }
+  body[data-path*="athru-service"] .main-section,
+  body .page_content { padding: 0 !important; max-width: none !important; }
+  #app { min-height: 100vh; }
+</style>
+{% endblock %}

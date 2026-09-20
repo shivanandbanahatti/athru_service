@@ -1,25 +1,26 @@
-"""Generic notification helpers for Athru Service."""
+"""Optional notifications for Athru Service."""
 
 from __future__ import annotations
 
 import frappe
 
 
-def notify_service_call_created(doc, method=None):
-	"""Optional hook: send mail to assigned engineers when a Service Call is created."""
+def notify_service_request_created(doc, method=None):
+	"""Optional: mail assigned engineers when an HD Ticket is created with personnel."""
 	recipients = []
-	for row in doc.service_personnel or []:
-		if row.user_id:
-			recipients.append(row.user_id)
-	if not recipients and doc.received_by:
-		return
+	for row in doc.get("custom_service_personnel") or []:
+		if not row.employee:
+			continue
+		user = frappe.db.get_value("Employee", row.employee, "user_id")
+		if user:
+			recipients.append(user)
 	if not recipients:
 		return
 	frappe.sendmail(
 		recipients=recipients,
-		subject=f"Service Call {doc.service_call_number or doc.name}",
-		message=f"New Service Call for {doc.serial_no or ''}: {doc.complaint or ''}",
+		subject=f"Service Request {doc.get('custom_service_request_number') or doc.name}",
+		message=f"New service request for {doc.get('custom_serial_no') or ''}: {doc.subject or ''}",
+		delayed=True,
 		reference_doctype=doc.doctype,
 		reference_name=doc.name,
-		now=False,
 	)

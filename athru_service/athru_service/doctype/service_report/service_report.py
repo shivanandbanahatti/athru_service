@@ -9,18 +9,27 @@ from frappe.model.document import Document
 
 class ServiceReport(Document):
 	def on_submit(self):
-		if self.service_call:
-			frappe.db.set_value("Service Call", self.service_call, "service_report", self.name)
-			if frappe.db.get_value("Service Call", self.service_call, "status") not in ("Closed", "Cancelled"):
-				frappe.db.set_value("Service Call", self.service_call, "status", "Resolved")
+		if self.maintenance_visit:
+			frappe.db.set_value(
+				"Maintenance Visit", self.maintenance_visit, "custom_service_report", self.name
+			)
+		if self.hd_ticket and frappe.db.exists("DocType", "HD Ticket"):
+			if frappe.db.has_column("HD Ticket", "status"):
+				frappe.db.set_value("HD Ticket", self.hd_ticket, "status", "Resolved")
 		if self.promote_to_problem_record:
 			from athru_service.api.knowledge import promote_from_service_report
 
 			promote_from_service_report(self.name)
 
 	def on_cancel(self):
-		if self.service_call and frappe.db.get_value("Service Call", self.service_call, "service_report") == self.name:
-			frappe.db.set_value("Service Call", self.service_call, "service_report", None)
+		if self.maintenance_visit:
+			current = frappe.db.get_value(
+				"Maintenance Visit", self.maintenance_visit, "custom_service_report"
+			)
+			if current == self.name:
+				frappe.db.set_value(
+					"Maintenance Visit", self.maintenance_visit, "custom_service_report", None
+				)
 
 
 def on_submit(doc, method=None):

@@ -11,10 +11,10 @@
   "column_break_pr_1",
   "item_code",
   "product_family",
-  "installed_equipment",
+  "machine_installation",
   "serial_no",
   "source_section",
-  "source_service_call",
+  "source_hd_ticket",
   "source_service_report",
   "column_break_pr_2",
   "resolved_by",
@@ -65,10 +65,10 @@
    "label": "Product Family"
   },
   {
-   "fieldname": "installed_equipment",
+   "fieldname": "machine_installation",
    "fieldtype": "Link",
-   "label": "Installed Equipment",
-   "options": "Installed Equipment"
+   "label": "Machine Installation",
+   "options": "Machine Installation"
   },
   {
    "fieldname": "serial_no",
@@ -84,8 +84,9 @@
   {
    "fieldname": "source_service_call",
    "fieldtype": "Link",
-   "label": "Source Service Call",
-   "options": "Service Call"
+   "label": "Source Service Request",
+   "description": "HD Ticket name (legacy field source_service_call)",
+   "options": "HD Ticket"
   },
   {
    "fieldname": "source_service_report",

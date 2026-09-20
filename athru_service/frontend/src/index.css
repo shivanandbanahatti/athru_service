@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --athru-ink: #0f172a;
+  --athru-muted: #64748b;
+  --athru-surface: #f8fafc;
+  --athru-accent: #0f766e;
+  --athru-line: #e2e8f0;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  background: var(--athru-surface);
+  color: var(--athru-ink);
+  font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+}
+
+.athru-card {
+  @apply bg-white border border-athru-line rounded-xl shadow-soft;
+}
+
+.athru-btn {
+  @apply inline-flex items-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium transition;
+}
+
+.athru-btn-primary {
+  @apply athru-btn bg-athru-accent text-white hover:brightness-110;
+}
+
+.athru-btn-ghost {
+  @apply athru-btn bg-transparent text-athru-ink border border-athru-line hover:bg-slate-50;
+}

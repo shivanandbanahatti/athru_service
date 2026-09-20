@@ -1,10 +1,10 @@
 frappe.query_reports["Equipment Lifetime History"] = {
 	filters: [
 		{
-			fieldname: "installed_equipment",
-			label: __("Installed Equipment"),
+			fieldname: "machine_installation",
+			label: __("Machine Installation"),
 			fieldtype: "Link",
-			options: "Installed Equipment",
+			options: "Machine Installation",
 		},
 		{
 			fieldname: "serial_no",

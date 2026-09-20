@@ -2,6 +2,7 @@
  "actions": [],
  "allow_rename": 1,
  "creation": "2026-09-20 12:00:00.000000",
+ "description": "DEPRECATED — use HD Ticket (Service Request) via Athru Service SPA. Kept for historical data only.",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [

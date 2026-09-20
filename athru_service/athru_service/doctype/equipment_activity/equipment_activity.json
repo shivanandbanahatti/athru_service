@@ -6,13 +6,13 @@
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
-  "installed_equipment",
+  "machine_installation",
   "serial_no",
   "customer",
   "column_break_ea_1",
   "activity_date",
   "activity_type",
-  "service_call",
+  "hd_ticket",
   "maintenance_visit",
   "details_section",
   "description",
@@ -31,10 +31,10 @@
    "reqd": 1
   },
   {
-   "fieldname": "installed_equipment",
+   "fieldname": "machine_installation",
    "fieldtype": "Link",
-   "label": "Installed Equipment",
-   "options": "Installed Equipment",
+   "label": "Machine Installation",
+   "options": "Machine Installation",
    "reqd": 1,
    "in_list_view": 1,
    "in_standard_filter": 1
@@ -44,7 +44,7 @@
    "fieldtype": "Link",
    "label": "Serial No",
    "options": "Serial No",
-   "fetch_from": "installed_equipment.serial_no",
+   "fetch_from": "machine_installation.serial_no",
    "read_only": 1,
    "in_list_view": 1
   },
@@ -53,7 +53,7 @@
    "fieldtype": "Link",
    "label": "Customer",
    "options": "Customer",
-   "fetch_from": "installed_equipment.customer",
+   "fetch_from": "machine_installation.customer",
    "read_only": 1
   },
   {
@@ -78,10 +78,10 @@
    "in_standard_filter": 1
   },
   {
-   "fieldname": "service_call",
+   "fieldname": "hd_ticket",
    "fieldtype": "Link",
-   "label": "Service Call",
-   "options": "Service Call"
+   "label": "Service Request (HD Ticket)",
+   "options": "HD Ticket"
   },
   {
    "fieldname": "maintenance_visit",
@@ -178,5 +178,5 @@
  "autoname": "naming_series:",
  "naming_rule": "By \"Naming Series\" field",
  "title_field": "activity_type",
- "search_fields": "installed_equipment,activity_type,activity_date,serial_no"
+ "search_fields": "machine_installation,activity_type,activity_date,serial_no"
 }

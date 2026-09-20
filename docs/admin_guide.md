@@ -6,49 +6,58 @@ ERPNext administrators configuring Athru Service for an ETO/MTO equipment manufa
 
 ## After install
 
-1. **Athru Service Settings**
-   - `Call Intake Mode`: `Any Service User` (default) or `Central Desk Only`
-   - `Service Call Naming`: `YYMMDD-##` (daily reverse-date sequence)
-   - `Contract Renewal Lead Days`: default 30
-2. **Roles** — assign to users:
+1. Ensure **Helpdesk** and **ERPNext** are installed (`required_apps`).
+2. **Athru Service Settings**
+   - Service Request Intake Mode: `Any Service User` or `Central Desk Only`
+   - Service Request Number Format: `YYMMDD-##` (stored on HD Ticket)
+   - Contract Renewal Lead Days: default 30
+3. **Roles** — assign to users:
    - Service Manager — full control
-   - Service Desk Agent — register and manage calls
-   - Service Engineer — field execution / reports
+   - Service Desk Agent — register and manage service requests
+   - Service Engineer — field visits / tasks / reports
    - Service Read Only — history viewing
-3. **Masters** — customise without code:
+4. **Org masters** (site data — not OEM packs in the repo):
+   - HD Ticket Types (Installation, Breakdown, Preventive, … seeded empty/generic)
    - Equipment Activity Type
-   - Service Call Type
    - Problem Code
-   - Checklist Template
+   - Checklist Templates (Pre-Install, Installation, PM, Commissioning)
+5. Build SPA assets (`frontend/` → `public/frontend/`) and open `/athru-service`.
 
-## Recommended process
+## Canonical process
 
-### Dispatch handoff
+### Dispatch + installation request
 
-1. Issue Serial No on finished goods.
-2. On Delivery Note submit (or via **Create Installed Equipment**), create Installed Equipment + Dispatched activity.
-3. Attach invoice / DN PDF on the activity.
+1. Serial in finished-goods warehouse (manufacturing out of scope for Athru v1).
+2. Submit Delivery Note with serialised items; leave **Create Machine Installation** / **Create Installation Service Request** checked.
+3. System creates **Machine Installation** + **HD Ticket** (`ticket_type=Installation`) and optional engineer rows.
 
-### Installation diary
+### On-site installation
 
-Log Equipment Activities day-wise (who went, problems faced). On completion, log **Installation Acceptance** and attach the signed certificate. Status becomes **Commissioned**.
+1. Create **Maintenance Visit** from the Installation ticket (Desk button or SPA).
+2. Log **day-wise Tasks** (process, issues) on the Visit console.
+3. Complete **Installation Report** (dual sign-off / acceptance attach); commission machine; close ticket.
 
-### Field calls
+### Post-install support
 
-Use **Register Service Call** (list button). Prefer a published support number; set **Central Desk Only** when ready. Select equipment by serial, enter complaint, complainant, action.
+1. New **HD Ticket** on the same Machine Installation (Breakdown / PMC / Contract / Billable).
+2. **Maintenance Schedule** only when planned (AMC/PMC); otherwise Visit directly from ticket.
+3. Capture RCA on Visit + formal **Service Report**; promote to **Problem Record** for knowledge search.
 
-### Knowledge reuse
+### Expenses
 
-On Service Report submit, enable **Promote to Problem Record**, or use **Promote** / **Find Similar Problems** on Service Call. Search by symptom text, problem codes, model, or equipment.
+Expense Claims link **Visit → HD Ticket → Machine Installation** (auto-stamped from Visit).
 
-### Contracts
+## SPA vs Desk
 
-Mark Quotation / Sales Order as **Is Service Contract**, set type and Installed Equipment. On submit, a draft Service Contract is created. Submit the contract to activate entitlements.
+| Path | Use |
+|------|-----|
+| `/athru-service` | Daily ops: dashboard, machine hub, service request board, visit+tasks, knowledge |
+| Desk DocType forms | Settings, masters, print formats, edge edits (“Open in Desk”) |
 
-## Custom fields on ERPNext
+## Custom fields
 
-Synced on install/migrate (see `athru_service/custom/custom_fields.json`): Serial No, Item, Maintenance Visit/Schedule, Quotation, Sales Order, Delivery Note.
+Synced on install/migrate from `athru_service/setup/custom_fields.json` via `create_custom_fields` (HD Ticket, Visit, Schedule, Task, Expense Claim, Quotation, Sales Order, Delivery Note, Serial No, Item).
 
 ## Branding
 
-Do not hardcode customer legal names in the app. Use Company letterhead in print formats. Keep customer-specific codes/templates on the site (or a private data package).
+Do not hardcode customer legal names in the app. Use Company letterhead in print formats. Keep customer-specific codes/templates on the site only.

@@ -7,14 +7,14 @@
  "field_order": [
   "naming_series",
   "amended_from",
-  "service_call",
+  "hd_ticket",
   "maintenance_visit",
   "column_break_sr_1",
   "company",
   "report_datetime",
   "service_type",
   "equipment_section",
-  "installed_equipment",
+  "machine_installation",
   "serial_no",
   "item_code",
   "column_break_sr_2",
@@ -53,10 +53,10 @@
    "no_copy": 1
   },
   {
-   "fieldname": "service_call",
+   "fieldname": "hd_ticket",
    "fieldtype": "Link",
-   "label": "Service Call",
-   "options": "Service Call",
+   "label": "Service Request (HD Ticket)",
+   "options": "HD Ticket",
    "reqd": 1,
    "in_list_view": 1
   },
@@ -95,11 +95,11 @@
    "label": "Equipment"
   },
   {
-   "fieldname": "installed_equipment",
+   "fieldname": "machine_installation",
    "fieldtype": "Link",
-   "label": "Installed Equipment",
-   "options": "Installed Equipment",
-   "fetch_from": "service_call.installed_equipment",
+   "label": "Machine Installation",
+   "options": "Machine Installation",
+   "fetch_from": "hd_ticket.machine_installation",
    "reqd": 1
   },
   {
@@ -107,7 +107,7 @@
    "fieldtype": "Link",
    "label": "Serial No",
    "options": "Serial No",
-   "fetch_from": "installed_equipment.serial_no",
+   "fetch_from": "machine_installation.serial_no",
    "read_only": 1
   },
   {
@@ -115,7 +115,7 @@
    "fieldtype": "Link",
    "label": "Item",
    "options": "Item",
-   "fetch_from": "installed_equipment.item_code",
+   "fetch_from": "machine_installation.item_code",
    "read_only": 1
   },
   {
@@ -127,7 +127,7 @@
    "fieldtype": "Link",
    "label": "Customer",
    "options": "Customer",
-   "fetch_from": "installed_equipment.customer",
+   "fetch_from": "machine_installation.customer",
    "read_only": 1
   },
   {
@@ -265,5 +265,5 @@
  "track_changes": 1,
  "autoname": "naming_series:",
  "naming_rule": "By \"Naming Series\" field",
- "search_fields": "service_call,serial_no,customer,status"
+ "search_fields": "hd_ticket,serial_no,customer,service_type"
 }

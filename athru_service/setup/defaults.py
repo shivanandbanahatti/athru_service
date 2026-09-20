@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import frappe
 
+from athru_service.athru_service.utils.hd_ticket import ensure_ticket_types
+
 ROLES = [
 	"Service Manager",
 	"Service Engineer",
@@ -11,7 +13,6 @@ ROLES = [
 	"Service Read Only",
 ]
 
-# (name, description, updates_equipment_status)
 ACTIVITY_TYPES = [
 	("Dispatched", "Equipment left factory / warehouse", "Dispatched"),
 	("Invoice Filed", "Commercial invoice or delivery document filed", None),
@@ -24,15 +25,6 @@ ACTIVITY_TYPES = [
 	("Installation Completed", "Installation work finished", None),
 	("Installation Acceptance", "Customer signed installation acceptance certificate", "Commissioned"),
 	("Other", "Miscellaneous activity", None),
-]
-
-CALL_TYPES = [
-	("Breakdown", "Equipment not working / failure"),
-	("Advisory", "Remote guidance / how-to"),
-	("Parts", "Spare parts request"),
-	("Installation Support", "Support during or after installation"),
-	("PMC", "Preventive maintenance call"),
-	("Other", "Other service call"),
 ]
 
 PROBLEM_CODE_SEEDS = [
@@ -52,8 +44,8 @@ def ensure_defaults():
 	_ensure_roles()
 	_ensure_settings()
 	_ensure_activity_types()
-	_ensure_call_types()
 	_ensure_problem_codes()
+	ensure_ticket_types()
 
 
 def _ensure_roles():
@@ -64,9 +56,6 @@ def _ensure_roles():
 
 
 def _ensure_settings():
-	if not frappe.db.exists("Athru Service Settings", "Athru Service Settings"):
-		# Single DocType is created on first get_single
-		pass
 	settings = frappe.get_single("Athru Service Settings")
 	dirty = False
 	if not settings.call_intake_mode:
@@ -93,20 +82,6 @@ def _ensure_activity_types():
 				"description": description,
 				"is_active": 1,
 				"updates_equipment_status": status,
-			}
-		).insert(ignore_permissions=True)
-
-
-def _ensure_call_types():
-	for name, description in CALL_TYPES:
-		if frappe.db.exists("Service Call Type", name):
-			continue
-		frappe.get_doc(
-			{
-				"doctype": "Service Call Type",
-				"call_type": name,
-				"description": description,
-				"is_active": 1,
 			}
 		).insert(ignore_permissions=True)
 

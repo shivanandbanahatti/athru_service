@@ -10,8 +10,8 @@
   "checklist_template",
   "purpose",
   "column_break_clr_1",
-  "installed_equipment",
-  "service_call",
+  "machine_installation",
+  "hd_ticket",
   "maintenance_visit",
   "status",
   "responses"
@@ -52,17 +52,17 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "installed_equipment",
+   "fieldname": "machine_installation",
    "fieldtype": "Link",
-   "label": "Installed Equipment",
-   "options": "Installed Equipment",
+   "label": "Machine Installation",
+   "options": "Machine Installation",
    "reqd": 1
   },
   {
-   "fieldname": "service_call",
+   "fieldname": "hd_ticket",
    "fieldtype": "Link",
-   "label": "Service Call",
-   "options": "Service Call"
+   "label": "Service Request (HD Ticket)",
+   "options": "HD Ticket"
   },
   {
    "fieldname": "maintenance_visit",

@@ -1,192 +1,62 @@
 [
- {
-  "doctype": "Custom Field",
-  "dt": "Serial No",
-  "fieldname": "custom_installed_equipment",
-  "fieldtype": "Link",
-  "label": "Installed Equipment",
-  "options": "Installed Equipment",
-  "insert_after": "item_code",
-  "read_only": 1
- },
- {
-  "doctype": "Custom Field",
-  "dt": "Item",
-  "fieldname": "custom_is_serviceable_equipment",
-  "fieldtype": "Check",
-  "label": "Is Serviceable Equipment",
-  "insert_after": "is_stock_item"
- },
- {
-  "doctype": "Custom Field",
-  "dt": "Item",
-  "fieldname": "custom_product_family",
-  "fieldtype": "Data",
-  "label": "Product Family",
-  "insert_after": "custom_is_serviceable_equipment"
- },
- {
-  "doctype": "Custom Field",
-  "dt": "Item",
-  "fieldname": "custom_default_user_manual",
-  "fieldtype": "Attach",
-  "label": "Default User Manual",
-  "insert_after": "custom_product_family"
- },
- {
-  "doctype": "Custom Field",
-  "dt": "Maintenance Visit",
-  "fieldname": "custom_service_call",
-  "fieldtype": "Link",
-  "label": "Service Call",
-  "options": "Service Call",
-  "insert_after": "customer"
- },
- {
-  "doctype": "Custom Field",
-  "dt": "Maintenance Visit",
-  "fieldname": "custom_installed_equipment",
-  "fieldtype": "Link",
-  "label": "Installed Equipment",
-  "options": "Installed Equipment",
-  "insert_after": "custom_service_call"
- },
- {
-  "doctype": "Custom Field",
-  "dt": "Maintenance Visit",
-  "fieldname": "custom_service_report",
-  "fieldtype": "Link",
-  "label": "Service Report",
-  "options": "Service Report",
-  "insert_after": "custom_installed_equipment",
-  "read_only": 1
- },
- {
-  "doctype": "Custom Field",
-  "dt": "Maintenance Schedule",
-  "fieldname": "custom_service_call",
-  "fieldtype": "Link",
-  "label": "Service Call",
-  "options": "Service Call",
-  "insert_after": "customer"
- },
- {
-  "doctype": "Custom Field",
-  "dt": "Maintenance Schedule",
-  "fieldname": "custom_installed_equipment",
-  "fieldtype": "Link",
-  "label": "Installed Equipment",
-  "options": "Installed Equipment",
-  "insert_after": "custom_service_call"
- },
- {
-  "doctype": "Custom Field",
-  "dt": "Maintenance Schedule",
-  "fieldname": "custom_service_contract",
-  "fieldtype": "Link",
-  "label": "Service Contract",
-  "options": "Service Contract",
-  "insert_after": "custom_installed_equipment"
- },
- {
-  "doctype": "Custom Field",
-  "dt": "Quotation",
-  "fieldname": "custom_is_service_contract",
-  "fieldtype": "Check",
-  "label": "Is Service Contract",
-  "insert_after": "order_type"
- },
- {
-  "doctype": "Custom Field",
-  "dt": "Quotation",
-  "fieldname": "custom_contract_type",
-  "fieldtype": "Select",
-  "label": "Contract Type",
-  "options": "\nAMC\nCAMC\nPMC\nExtended Warranty",
-  "insert_after": "custom_is_service_contract",
-  "depends_on": "eval:doc.custom_is_service_contract"
- },
- {
-  "doctype": "Custom Field",
-  "dt": "Quotation",
-  "fieldname": "custom_installed_equipment",
-  "fieldtype": "Link",
-  "label": "Installed Equipment",
-  "options": "Installed Equipment",
-  "insert_after": "custom_contract_type",
-  "depends_on": "eval:doc.custom_is_service_contract"
- },
- {
-  "doctype": "Custom Field",
-  "dt": "Quotation",
-  "fieldname": "custom_included_pm_visits",
-  "fieldtype": "Int",
-  "label": "Included PM Visits",
-  "insert_after": "custom_installed_equipment",
-  "depends_on": "eval:doc.custom_is_service_contract"
- },
- {
-  "doctype": "Custom Field",
-  "dt": "Quotation",
-  "fieldname": "custom_included_emergency_visits",
-  "fieldtype": "Int",
-  "label": "Included Emergency Visits",
-  "insert_after": "custom_included_pm_visits",
-  "depends_on": "eval:doc.custom_is_service_contract"
- },
- {
-  "doctype": "Custom Field",
-  "dt": "Sales Order",
-  "fieldname": "custom_is_service_contract",
-  "fieldtype": "Check",
-  "label": "Is Service Contract",
-  "insert_after": "order_type"
- },
- {
-  "doctype": "Custom Field",
-  "dt": "Sales Order",
-  "fieldname": "custom_contract_type",
-  "fieldtype": "Select",
-  "label": "Contract Type",
-  "options": "\nAMC\nCAMC\nPMC\nExtended Warranty",
-  "insert_after": "custom_is_service_contract",
-  "depends_on": "eval:doc.custom_is_service_contract"
- },
- {
-  "doctype": "Custom Field",
-  "dt": "Sales Order",
-  "fieldname": "custom_installed_equipment",
-  "fieldtype": "Link",
-  "label": "Installed Equipment",
-  "options": "Installed Equipment",
-  "insert_after": "custom_contract_type",
-  "depends_on": "eval:doc.custom_is_service_contract"
- },
- {
-  "doctype": "Custom Field",
-  "dt": "Sales Order",
-  "fieldname": "custom_included_pm_visits",
-  "fieldtype": "Int",
-  "label": "Included PM Visits",
-  "insert_after": "custom_installed_equipment",
-  "depends_on": "eval:doc.custom_is_service_contract"
- },
- {
-  "doctype": "Custom Field",
-  "dt": "Sales Order",
-  "fieldname": "custom_included_emergency_visits",
-  "fieldtype": "Int",
-  "label": "Included Emergency Visits",
-  "insert_after": "custom_included_pm_visits",
-  "depends_on": "eval:doc.custom_is_service_contract"
- },
- {
-  "doctype": "Custom Field",
-  "dt": "Delivery Note",
-  "fieldname": "custom_create_installed_equipment",
-  "fieldtype": "Check",
-  "label": "Create Installed Equipment on Submit",
-  "insert_after": "customer",
-  "description": "When enabled, serialised items create Installed Equipment and a Dispatched activity"
- }
+  {"dt": "Serial No", "fieldname": "custom_machine_installation", "fieldtype": "Link", "label": "Machine Installation", "options": "Machine Installation", "insert_after": "item_code", "read_only": 1},
+  {"dt": "Item", "fieldname": "custom_is_serviceable_equipment", "fieldtype": "Check", "label": "Is Serviceable Equipment", "insert_after": "is_stock_item"},
+  {"dt": "Item", "fieldname": "custom_product_family", "fieldtype": "Data", "label": "Product Family", "insert_after": "custom_is_serviceable_equipment"},
+  {"dt": "Item", "fieldname": "custom_default_user_manual", "fieldtype": "Attach", "label": "Default User Manual", "insert_after": "custom_product_family"},
+
+  {"dt": "HD Ticket", "fieldname": "custom_athru_section", "fieldtype": "Section Break", "label": "Equipment Service", "insert_after": "description"},
+  {"dt": "HD Ticket", "fieldname": "custom_service_request_number", "fieldtype": "Data", "label": "Service Request Number", "insert_after": "custom_athru_section", "read_only": 1, "bold": 1},
+  {"dt": "HD Ticket", "fieldname": "custom_machine_installation", "fieldtype": "Link", "label": "Machine Installation", "options": "Machine Installation", "insert_after": "custom_service_request_number", "in_standard_filter": 1},
+  {"dt": "HD Ticket", "fieldname": "custom_serial_no", "fieldtype": "Link", "label": "Serial No", "options": "Serial No", "insert_after": "custom_machine_installation", "fetch_from": "custom_machine_installation.serial_no", "in_list_view": 1},
+  {"dt": "HD Ticket", "fieldname": "custom_item_code", "fieldtype": "Link", "label": "Item", "options": "Item", "insert_after": "custom_serial_no", "fetch_from": "custom_machine_installation.item_code", "read_only": 1},
+  {"dt": "HD Ticket", "fieldname": "custom_column_break_athru_1", "fieldtype": "Column Break", "insert_after": "custom_item_code"},
+  {"dt": "HD Ticket", "fieldname": "custom_erp_customer", "fieldtype": "Link", "label": "ERP Customer", "options": "Customer", "insert_after": "custom_column_break_athru_1", "fetch_from": "custom_machine_installation.customer", "read_only": 1},
+  {"dt": "HD Ticket", "fieldname": "custom_project", "fieldtype": "Link", "label": "Project", "options": "Project", "insert_after": "custom_erp_customer", "fetch_from": "custom_machine_installation.project", "read_only": 1},
+  {"dt": "HD Ticket", "fieldname": "custom_service_contract", "fieldtype": "Link", "label": "Service Contract", "options": "Service Contract", "insert_after": "custom_project", "fetch_from": "custom_machine_installation.current_service_contract"},
+  {"dt": "HD Ticket", "fieldname": "custom_warranty_status", "fieldtype": "Data", "label": "Warranty / Contract Status", "insert_after": "custom_service_contract", "fetch_from": "custom_machine_installation.maintenance_status", "read_only": 1},
+  {"dt": "HD Ticket", "fieldname": "custom_visit_category", "fieldtype": "Select", "label": "Visit Category", "options": "\nInstallation\nBreakdown\nPMC\nAMC\nCAMC\nBillable\nWarranty\nAdvisory\nParts", "insert_after": "custom_warranty_status"},
+  {"dt": "HD Ticket", "fieldname": "custom_total_previous_visits", "fieldtype": "Int", "label": "Previous Visits", "insert_after": "custom_visit_category", "read_only": 1},
+  {"dt": "HD Ticket", "fieldname": "custom_latest_visit", "fieldtype": "Link", "label": "Latest Maintenance Visit", "options": "Maintenance Visit", "insert_after": "custom_total_previous_visits", "read_only": 1},
+  {"dt": "HD Ticket", "fieldname": "custom_service_personnel", "fieldtype": "Table", "label": "Service Personnel", "options": "Service Personnel", "insert_after": "custom_latest_visit"},
+
+  {"dt": "Maintenance Visit", "fieldname": "custom_hd_ticket", "fieldtype": "Link", "label": "Service Request (HD Ticket)", "options": "HD Ticket", "insert_after": "customer", "in_standard_filter": 1},
+  {"dt": "Maintenance Visit", "fieldname": "custom_machine_installation", "fieldtype": "Link", "label": "Machine Installation", "options": "Machine Installation", "insert_after": "custom_hd_ticket"},
+  {"dt": "Maintenance Visit", "fieldname": "custom_visit_category", "fieldtype": "Select", "label": "Visit Category", "options": "\nInstallation\nBreakdown\nPMC\nAMC\nCAMC\nBillable\nWarranty\nAdvisory", "insert_after": "custom_machine_installation"},
+  {"dt": "Maintenance Visit", "fieldname": "custom_problem_summary", "fieldtype": "Small Text", "label": "Problem Summary", "insert_after": "custom_visit_category"},
+  {"dt": "Maintenance Visit", "fieldname": "custom_root_cause", "fieldtype": "Text Editor", "label": "Root Cause", "insert_after": "custom_problem_summary"},
+  {"dt": "Maintenance Visit", "fieldname": "custom_resolution", "fieldtype": "Text Editor", "label": "Resolution", "insert_after": "custom_root_cause"},
+  {"dt": "Maintenance Visit", "fieldname": "custom_service_report", "fieldtype": "Link", "label": "Service Report", "options": "Service Report", "insert_after": "custom_resolution", "read_only": 1},
+  {"dt": "Maintenance Visit", "fieldname": "custom_installation_report", "fieldtype": "Link", "label": "Installation Report", "options": "Installation Report", "insert_after": "custom_service_report", "read_only": 1},
+  {"dt": "Maintenance Visit", "fieldname": "custom_service_personnel", "fieldtype": "Table", "label": "Service Personnel", "options": "Service Personnel", "insert_after": "custom_installation_report"},
+
+  {"dt": "Maintenance Schedule", "fieldname": "custom_hd_ticket", "fieldtype": "Link", "label": "Service Request (HD Ticket)", "options": "HD Ticket", "insert_after": "customer"},
+  {"dt": "Maintenance Schedule", "fieldname": "custom_machine_installation", "fieldtype": "Link", "label": "Machine Installation", "options": "Machine Installation", "insert_after": "custom_hd_ticket"},
+  {"dt": "Maintenance Schedule", "fieldname": "custom_service_contract", "fieldtype": "Link", "label": "Service Contract", "options": "Service Contract", "insert_after": "custom_machine_installation"},
+
+  {"dt": "Task", "fieldname": "custom_maintenance_visit", "fieldtype": "Link", "label": "Maintenance Visit", "options": "Maintenance Visit", "insert_after": "project"},
+  {"dt": "Task", "fieldname": "custom_hd_ticket", "fieldtype": "Link", "label": "Service Request (HD Ticket)", "options": "HD Ticket", "insert_after": "custom_maintenance_visit"},
+  {"dt": "Task", "fieldname": "custom_machine_installation", "fieldtype": "Link", "label": "Machine Installation", "options": "Machine Installation", "insert_after": "custom_hd_ticket"},
+  {"dt": "Task", "fieldname": "custom_work_log", "fieldtype": "Text Editor", "label": "Work Log / Issues", "insert_after": "custom_machine_installation"},
+  {"dt": "Task", "fieldname": "custom_work_date", "fieldtype": "Date", "label": "Work Date", "insert_after": "custom_work_log", "in_list_view": 1, "in_standard_filter": 1},
+
+  {"dt": "Expense Claim", "fieldname": "custom_maintenance_visit", "fieldtype": "Link", "label": "Maintenance Visit", "options": "Maintenance Visit", "insert_after": "employee"},
+  {"dt": "Expense Claim", "fieldname": "custom_hd_ticket", "fieldtype": "Link", "label": "Service Request (HD Ticket)", "options": "HD Ticket", "insert_after": "custom_maintenance_visit", "fetch_from": "custom_maintenance_visit.custom_hd_ticket"},
+  {"dt": "Expense Claim", "fieldname": "custom_machine_installation", "fieldtype": "Link", "label": "Machine Installation", "options": "Machine Installation", "insert_after": "custom_hd_ticket", "fetch_from": "custom_maintenance_visit.custom_machine_installation"},
+
+  {"dt": "Quotation", "fieldname": "custom_is_service_contract", "fieldtype": "Check", "label": "Is Service Contract", "insert_after": "order_type"},
+  {"dt": "Quotation", "fieldname": "custom_contract_type", "fieldtype": "Select", "label": "Contract Type", "options": "\nAMC\nCAMC\nPMC\nExtended Warranty", "insert_after": "custom_is_service_contract", "depends_on": "eval:doc.custom_is_service_contract"},
+  {"dt": "Quotation", "fieldname": "custom_machine_installation", "fieldtype": "Link", "label": "Machine Installation", "options": "Machine Installation", "insert_after": "custom_contract_type", "depends_on": "eval:doc.custom_is_service_contract"},
+  {"dt": "Quotation", "fieldname": "custom_included_pm_visits", "fieldtype": "Int", "label": "Included PM Visits", "insert_after": "custom_machine_installation", "depends_on": "eval:doc.custom_is_service_contract"},
+  {"dt": "Quotation", "fieldname": "custom_included_emergency_visits", "fieldtype": "Int", "label": "Included Emergency Visits", "insert_after": "custom_included_pm_visits", "depends_on": "eval:doc.custom_is_service_contract"},
+
+  {"dt": "Sales Order", "fieldname": "custom_is_service_contract", "fieldtype": "Check", "label": "Is Service Contract", "insert_after": "order_type"},
+  {"dt": "Sales Order", "fieldname": "custom_contract_type", "fieldtype": "Select", "label": "Contract Type", "options": "\nAMC\nCAMC\nPMC\nExtended Warranty", "insert_after": "custom_is_service_contract", "depends_on": "eval:doc.custom_is_service_contract"},
+  {"dt": "Sales Order", "fieldname": "custom_machine_installation", "fieldtype": "Link", "label": "Machine Installation", "options": "Machine Installation", "insert_after": "custom_contract_type", "depends_on": "eval:doc.custom_is_service_contract"},
+  {"dt": "Sales Order", "fieldname": "custom_included_pm_visits", "fieldtype": "Int", "label": "Included PM Visits", "insert_after": "custom_machine_installation", "depends_on": "eval:doc.custom_is_service_contract"},
+  {"dt": "Sales Order", "fieldname": "custom_included_emergency_visits", "fieldtype": "Int", "label": "Included Emergency Visits", "insert_after": "custom_included_pm_visits", "depends_on": "eval:doc.custom_is_service_contract"},
+  {"dt": "Sales Order", "fieldname": "custom_installation_included", "fieldtype": "Check", "label": "Installation Included", "insert_after": "custom_included_emergency_visits"},
+
+  {"dt": "Delivery Note", "fieldname": "custom_create_machine_installation", "fieldtype": "Check", "label": "Create Machine Installation on Submit", "insert_after": "customer", "default": "1"},
+  {"dt": "Delivery Note", "fieldname": "custom_create_installation_ticket", "fieldtype": "Check", "label": "Create Installation Service Request", "insert_after": "custom_create_machine_installation", "default": "1"},
+  {"dt": "Delivery Note", "fieldname": "custom_installation_engineers", "fieldtype": "Table", "label": "Installation Engineers", "options": "Service Personnel", "insert_after": "custom_create_installation_ticket", "depends_on": "eval:doc.custom_create_installation_ticket"}
 ]

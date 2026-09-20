@@ -16,7 +16,7 @@
  "name": "Equipment Lifetime History",
  "owner": "Administrator",
  "prepared_report": 0,
- "ref_doctype": "Installed Equipment",
+ "ref_doctype": "Machine Installation",
  "report_name": "Equipment Lifetime History",
  "report_type": "Script Report",
  "roles": [

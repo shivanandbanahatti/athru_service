@@ -1,36 +1,41 @@
 # Athru Service
 
-Brand-neutral field service framework for ETO/MTO equipment companies on **ERPNext v16**.
+Brand-neutral field service framework for ETO/MTO equipment companies on **ERPNext v16** + **Helpdesk**.
 
 ## What it does
 
-- **Installed Equipment** — lifetime hub per Serial No (+ optional Project)
-- **Equipment Activity** — day-wise dispatch → install → acceptance diary with attachments
-- **Service Call** — field intake with configurable `YYMMDD-##` numbering (not a ticket system)
-- **Service Report** — problem, root cause, corrective action, parts
+- **Athru Service SPA** (`/athru-service`) — primary operator UX (frappe-ui / Vue)
+- **Machine Installation** — lifetime hub per Serial No (+ optional Project)
+- **HD Ticket** — Service Request (Installation / Breakdown / PMC / …)
+- **Maintenance Visit + Tasks** — field execution with day-wise work log
+- **Installation Report / Service Report** — commissioning sign-off vs support RCA
 - **Service Contract** — AMC / CAMC / PMC / Extended Warranty
-- **Problem Code / Problem Record** — searchable knowledge (by machine and by problem)
-- **Checklist Template / Response** — configurable install & PM forms
+- **Problem Code / Problem Record** — searchable knowledge
+- **Checklist Template / Response** — org-built install & PM forms
+- **Expense Claim** chain — Visit → Ticket → Machine Installation
+
+`Service Call` remains in the app as a **deprecated** DocType (read-only migration path).
 
 ## Install
 
 ```bash
 cd /path/to/frappe-bench
-bench get-app /path/to/athru_service
-# or: bench get-app <git-url>
+bench get-app <git-url-or-path>
 bench --site <site> install-app athru_service
 bench --site <site> migrate
+# Frontend SPA
+cd apps/athru_service/athru_service/frontend && yarn && yarn build
 bench build --app athru_service
 ```
 
-Requires `erpnext` (v16+).
+Requires `erpnext` and `helpdesk`.
 
 ## Configure (any company)
 
-1. Open **Athru Service Settings** — call intake mode, naming, renewal lead days.
-2. Review seeded **Equipment Activity Type**, **Service Call Type**, **Problem Code** (edit/add freely).
-3. Create **Checklist Templates** for your product families.
-4. Assign roles: Service Manager, Service Desk Agent, Service Engineer, Service Read Only.
+1. Open **Athru Service Settings** — intake mode, `YYMMDD-##` display numbers, renewal lead days.
+2. Seed / extend **HD Ticket Types**, **Equipment Activity Types**, **Problem Codes**, **Checklist Templates**.
+3. Assign roles: Service Manager, Service Desk Agent, Service Engineer, Service Read Only.
+4. Open `/athru-service` for the SPA happy path.
 
 Optional demo data (development only):
 

@@ -1,30 +1,28 @@
-"""Knowledge search and promote helpers."""
+"""Knowledge search and promote helpers (HD Ticket + Service Report)."""
 
 from __future__ import annotations
 
 import frappe
-from frappe import _
 from frappe.utils import nowdate, strip_html
 
 
 @frappe.whitelist()
 def find_similar(
 	free_text: str | None = None,
+	query: str | None = None,
 	problem_codes: str | list | None = None,
 	item_code: str | None = None,
-	installed_equipment: str | None = None,
-	exclude_service_call: str | None = None,
+	machine_installation: str | None = None,
+	exclude_ticket: str | None = None,
 	limit: int = 20,
 ) -> list[dict]:
-	"""Search Problem Records and past Service Calls/Reports by equipment and/or problem."""
+	free_text = free_text or query
 	limit = min(int(limit or 20), 50)
 	if isinstance(problem_codes, str):
 		problem_codes = [c.strip() for c in problem_codes.split(",") if c.strip()]
 	problem_codes = problem_codes or []
-
 	results: list[dict] = []
 
-	# Problem Records
 	filters: dict = {"is_active": 1}
 	if item_code:
 		filters["item_code"] = item_code
@@ -36,24 +34,24 @@ def find_similar(
 			"title",
 			"item_code",
 			"serial_no",
-			"installed_equipment",
+			"machine_installation",
 			"symptom",
 			"root_cause",
 			"solution",
 			"searchable_text",
-			"resolved_on",
 			"source_service_call",
+			"source_service_report",
 		],
 		limit_page_length=200,
 	)
+	# tolerate old field name source_service_call storing ticket name
 	for rec in records:
 		score = _score(
 			rec,
 			free_text=free_text,
 			problem_codes=problem_codes,
 			item_code=item_code,
-			installed_equipment=installed_equipment,
-			text_field="searchable_text",
+			machine_installation=machine_installation,
 		)
 		if score <= 0:
 			continue
@@ -67,100 +65,132 @@ def find_similar(
 				"serial_no": rec.serial_no,
 				"root_cause": strip_html(rec.root_cause or "")[:300],
 				"solution": strip_html(rec.solution or "")[:300],
-				"source_service_call": rec.source_service_call,
 			}
 		)
 
-	# Past service calls with resolution
-	call_filters: dict = {"status": ["in", ["Resolved", "Closed"]]}
-	if installed_equipment:
-		# Prefer same equipment first via scoring, but also search same model
-		pass
-	if exclude_service_call:
-		call_filters["name"] = ["!=", exclude_service_call]
-	calls = frappe.get_all(
-		"Service Call",
-		filters=call_filters,
+	# Submitted service reports
+	report_filters = {"docstatus": 1}
+	reports = frappe.get_all(
+		"Service Report",
+		filters=report_filters,
 		fields=[
 			"name",
-			"service_call_number",
-			"complaint",
-			"action_taken",
-			"resolution_summary",
+			"machine_installation",
 			"item_code",
 			"serial_no",
-			"installed_equipment",
-			"call_date",
+			"problem_description",
+			"root_cause",
+			"corrective_action",
+			"hd_ticket",
 		],
 		limit_page_length=200,
-		order_by="call_date desc",
+		order_by="creation desc",
 	)
-	for call in calls:
+	for report in reports:
+		if exclude_ticket and report.hd_ticket == exclude_ticket:
+			continue
 		blob = " ".join(
 			[
-				call.complaint or "",
-				strip_html(call.action_taken or ""),
-				call.resolution_summary or "",
+				strip_html(report.problem_description or ""),
+				strip_html(report.root_cause or ""),
+				strip_html(report.corrective_action or ""),
 			]
 		)
 		proxy = {
-			"installed_equipment": call.installed_equipment,
-			"item_code": call.item_code,
+			"machine_installation": report.machine_installation,
+			"item_code": report.item_code,
 			"searchable_text": blob,
-			"name": call.name,
+			"name": report.name,
 		}
-		# attach problem codes
-		codes = frappe.get_all(
-			"Service Call Problem Code",
-			filters={"parent": call.name, "parenttype": "Service Call"},
-			pluck="problem_code",
-		)
 		score = _score(
 			proxy,
 			free_text=free_text,
 			problem_codes=problem_codes,
 			item_code=item_code,
-			installed_equipment=installed_equipment,
-			extra_codes=codes,
-			text_field="searchable_text",
+			machine_installation=machine_installation,
 		)
 		if score <= 0:
 			continue
 		results.append(
 			{
-				"doctype": "Service Call",
-				"name": call.name,
-				"title": call.service_call_number or call.name,
+				"doctype": "Service Report",
+				"name": report.name,
+				"title": report.name,
 				"score": score,
-				"item_code": call.item_code,
-				"serial_no": call.serial_no,
-				"root_cause": "",
-				"solution": (call.resolution_summary or strip_html(call.action_taken or ""))[:300],
-				"source_service_call": call.name,
+				"item_code": report.item_code,
+				"serial_no": report.serial_no,
+				"root_cause": strip_html(report.root_cause or "")[:300],
+				"solution": strip_html(report.corrective_action or "")[:300],
 			}
 		)
 
 	results.sort(key=lambda r: r["score"], reverse=True)
+
+	# Closed / resolved HD Tickets (Service Requests)
+	if frappe.db.exists("DocType", "HD Ticket") and free_text:
+		tickets = frappe.get_all(
+			"HD Ticket",
+			filters={"status": ["in", ["Resolved", "Closed"]]},
+			fields=[
+				"name",
+				"subject",
+				"status",
+				"description",
+				"custom_machine_installation",
+				"custom_item_code",
+				"custom_serial_no",
+				"custom_service_request_number",
+			],
+			limit_page_length=100,
+			order_by="modified desc",
+		)
+		for t in tickets:
+			if exclude_ticket and t.name == exclude_ticket:
+				continue
+			proxy = {
+				"machine_installation": t.custom_machine_installation,
+				"item_code": t.custom_item_code,
+				"searchable_text": " ".join(
+					[t.subject or "", strip_html(t.description or ""), t.custom_service_request_number or ""]
+				),
+				"name": t.name,
+			}
+			score = _score(
+				proxy,
+				free_text=free_text,
+				problem_codes=problem_codes,
+				item_code=item_code,
+				machine_installation=machine_installation,
+			)
+			if score <= 0:
+				continue
+			results.append(
+				{
+					"doctype": "HD Ticket",
+					"name": t.name,
+					"title": t.subject or t.custom_service_request_number or t.name,
+					"subject": t.subject,
+					"status": t.status,
+					"score": score,
+					"item_code": t.custom_item_code,
+					"serial_no": t.custom_serial_no,
+					"snippet": strip_html(t.description or "")[:300],
+					"root_cause": "",
+					"solution": strip_html(t.description or "")[:300],
+				}
+			)
+		results.sort(key=lambda r: r["score"], reverse=True)
+
 	return results[:limit]
 
 
-def _score(
-	rec,
-	*,
-	free_text,
-	problem_codes,
-	item_code,
-	installed_equipment,
-	text_field="searchable_text",
-	extra_codes=None,
-) -> int:
+def _score(rec, *, free_text, problem_codes, item_code, machine_installation, extra_codes=None) -> int:
 	score = 0
-	if installed_equipment and rec.get("installed_equipment") == installed_equipment:
+	if machine_installation and rec.get("machine_installation") == machine_installation:
 		score += 50
 	if item_code and rec.get("item_code") == item_code:
 		score += 25
 	codes = set(extra_codes or [])
-	# child codes on Problem Record
 	if rec.get("name") and frappe.db.exists("Problem Record", rec.get("name")):
 		codes.update(
 			frappe.get_all(
@@ -169,33 +199,28 @@ def _score(
 				pluck="problem_code",
 			)
 		)
-	overlap = codes.intersection(set(problem_codes or []))
-	score += 10 * len(overlap)
+	score += 10 * len(codes.intersection(set(problem_codes or [])))
 	if free_text:
-		hay = (rec.get(text_field) or "").lower()
+		hay = (rec.get("searchable_text") or "").lower()
 		tokens = [t for t in free_text.lower().split() if len(t) > 2]
-		hits = sum(1 for t in tokens if t in hay)
-		score += hits * 3
+		score += sum(1 for t in tokens if t in hay) * 3
 	return score
 
 
 @frappe.whitelist()
 def promote_from_service_report(service_report: str) -> str:
-	"""Create or update a Problem Record from a submitted Service Report."""
 	report = frappe.get_doc("Service Report", service_report)
 	title = (strip_html(report.problem_description or "") or report.name)[:140]
 	existing = frappe.db.get_value(
-		"Problem Record",
-		{"source_service_report": report.name},
-		"name",
+		"Problem Record", {"source_service_report": report.name}, "name"
 	)
 	payload = {
 		"doctype": "Problem Record",
 		"title": title,
 		"item_code": report.item_code,
-		"installed_equipment": report.installed_equipment,
+		"machine_installation": report.machine_installation,
 		"serial_no": report.serial_no,
-		"source_service_call": report.service_call,
+		"source_service_call": report.hd_ticket,
 		"source_service_report": report.name,
 		"symptom": report.problem_description,
 		"root_cause": report.root_cause,
@@ -212,7 +237,6 @@ def promote_from_service_report(service_report: str) -> str:
 			doc.append("problem_codes", {"problem_code": row.problem_code})
 		doc.save(ignore_permissions=True)
 		return doc.name
-
 	doc = frappe.get_doc(payload)
 	for row in report.problem_codes or []:
 		doc.append("problem_codes", {"problem_code": row.problem_code})
@@ -221,26 +245,23 @@ def promote_from_service_report(service_report: str) -> str:
 
 
 @frappe.whitelist()
-def promote_from_service_call(service_call: str) -> str:
-	call = frappe.get_doc("Service Call", service_call)
-	title = (call.complaint or call.service_call_number or call.name)[:140]
+def promote_from_ticket(hd_ticket: str) -> str:
+	ticket = frappe.get_doc("HD Ticket", hd_ticket)
+	title = (ticket.subject or ticket.name)[:140]
 	doc = frappe.get_doc(
 		{
 			"doctype": "Problem Record",
 			"title": title,
-			"item_code": call.item_code,
-			"installed_equipment": call.installed_equipment,
-			"serial_no": call.serial_no,
-			"source_service_call": call.name,
-			"symptom": call.complaint,
-			"root_cause": "",
-			"solution": call.resolution_summary or call.action_taken,
+			"item_code": ticket.get("custom_item_code"),
+			"machine_installation": ticket.get("custom_machine_installation"),
+			"serial_no": ticket.get("custom_serial_no"),
+			"source_service_call": ticket.name,
+			"symptom": ticket.description or ticket.subject,
+			"solution": "",
 			"resolved_by": frappe.session.user,
 			"resolved_on": nowdate(),
 			"is_active": 1,
 		}
 	)
-	for row in call.problem_codes or []:
-		doc.append("problem_codes", {"problem_code": row.problem_code})
 	doc.insert(ignore_permissions=True)
 	return doc.name

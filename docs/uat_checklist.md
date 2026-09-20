@@ -1,43 +1,52 @@
-# Athru Service — UAT Checklist
+# Athru Service — UAT Checklist (SPA-first)
 
 Use the customer's Company / Item / Serial data on their site. Do not commit OEM names into the app.
 
 ## Setup
 
-- [ ] App installed on ERPNext v16 site; migrate + build succeeded
-- [ ] Roles assigned; Athru Service workspace visible
-- [ ] Brand lint clean in app repo (`python scripts/brand_lint.py`)
+- [ ] App installed on ERPNext v16 + Helpdesk; migrate + `yarn build` (frontend) + `bench build --app athru_service` succeeded
+- [ ] Roles assigned; Athru Service workspace shows SPA shortcut
+- [ ] Brand lint clean (`python scripts/brand_lint.py`)
+- [ ] Org masters seeded/edited: HD Ticket Types, Activity Types, Problem Codes, Checklist Templates
+
+## SPA shell
+
+- [ ] `/athru-service` loads Ops dashboard (open requests, visits today, contracts, my tasks)
+- [ ] Navigation: Machines, Service Requests, Knowledge
+- [ ] “Open Desk” escape hatch works
 
 ## Dispatch → Commission
 
-- [ ] Create Installed Equipment with Serial No (+ Project if used)
-- [ ] Log Dispatched activity with invoice attachment
-- [ ] Log Received / Goods Inward with attachment
-- [ ] Log User Manual Sent; file retrievable from activity and equipment
-- [ ] Log day-wise Installation Progress with service personnel
-- [ ] Log Installation Acceptance with signed certificate; status = Commissioned
+- [ ] Submit Delivery Note with serial → Machine Installation created
+- [ ] Installation HD Ticket created with engineers when flagged
+- [ ] SPA Machine Hub shows identity + timeline (activity + ticket)
+- [ ] Visit from ticket; day-wise Tasks via Visit console
+- [ ] Installation Report submitted with acceptance; machine status Commissioned
 
-## Service Call
+## Service Request (HD Ticket)
 
-- [ ] Register Service Call via list dialog; number is `YYMMDD-##`
-- [ ] Serial / Installed Equipment typeahead works
-- [ ] Call appears on Installed Equipment lifetime history
-- [ ] Create Maintenance Visit from call; create Service Report from visit/call
+- [ ] Create support request from Machine Hub; `custom_service_request_number` is `YYMMDD-##`
+- [ ] Board/list shows ticket by status; equipment panel fields present
+- [ ] Planned PMC creates Maintenance Schedule; emergency creates Visit only
+- [ ] Service Report from Visit/Ticket; promote to Problem Record
+
+## Expenses
+
+- [ ] Create Expense Claim from Visit console; Visit / Ticket / Machine stamped
+- [ ] Desk Expense Claim form shows same links
 
 ## Knowledge
 
-- [ ] Submit Service Report with problem codes, root cause, corrective action
-- [ ] Problem Record created (promote)
-- [ ] Find Similar Problems returns the prior solution on another unit / same model
+- [ ] Knowledge search UI finds prior Service Reports / Problem Records by symptom / item
+- [ ] Find similar from Machine Hub / Knowledge page
 
 ## Contracts
 
-- [ ] Service Quotation creates Service Contract draft
-- [ ] Submitted contract sets current contract on Installed Equipment
-- [ ] Renewal followup appears when end date is within lead days (or simulate date)
+- [ ] Service Quotation / SO creates Service Contract draft
+- [ ] Submitted contract sets current contract on Machine Installation
+- [ ] Renewal followup within lead days
 
-## Configuration
+## Deprecation
 
-- [ ] Fresh site can run using only after_install defaults + user-created masters
-- [ ] Checklist Template loads into Checklist Response
-- [ ] Central Desk Only blocks non-desk roles from creating calls
+- [ ] Service Call form shows deprecated notice and links to SPA / HD Ticket
+- [ ] Workspace does not promote Service Call as primary intake
