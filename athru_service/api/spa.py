@@ -130,7 +130,7 @@ def get_machine_hub(name: str | None = None, machine_installation: str | None = 
 	if not machine_installation:
 		frappe.throw(_("Machine Installation is required"))
 
-	from athru_service.athru_service.doctype.machine_installation.machine_installation import (
+	from athru_service.service_management.doctype.machine_installation.machine_installation import (
 		get_lifetime_history,
 	)
 
@@ -277,7 +277,7 @@ def create_service_request(
 ):
 	if not frappe.db.exists("DocType", "HD Ticket"):
 		frappe.throw(_("Helpdesk (HD Ticket) is required."))
-	from athru_service.athru_service.utils.hd_ticket import ensure_ticket_types, make_service_request_number
+	from athru_service.service_management.utils.hd_ticket import ensure_ticket_types, make_service_request_number
 
 	ensure_ticket_types()
 	mi = frappe.get_doc("Machine Installation", machine_installation)

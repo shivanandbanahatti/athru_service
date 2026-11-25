@@ -69,7 +69,7 @@ def _ensure_machine_and_ticket(dn, item):
 				},
 			)
 			if not existing and frappe.db.exists("DocType", "HD Ticket"):
-				from athru_service.athru_service.utils.hd_ticket import create_installation_ticket
+				from athru_service.service_management.utils.hd_ticket import create_installation_ticket
 
 				engineers = [
 					{"employee": r.employee, "role": r.role}
