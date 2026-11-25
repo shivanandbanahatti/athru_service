@@ -9,17 +9,22 @@ import frappe
 from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
 
 from athru_service.setup.defaults import ensure_defaults
+from athru_service.setup.workflows import ensure_notifications, ensure_workflows
 
 
 def after_install():
 	sync_custom_fields()
 	ensure_defaults()
+	ensure_workflows()
+	ensure_notifications()
 	frappe.clear_cache()
 
 
 def after_migrate():
 	sync_custom_fields()
 	ensure_defaults()
+	ensure_workflows()
+	ensure_notifications()
 
 
 def sync_custom_fields():

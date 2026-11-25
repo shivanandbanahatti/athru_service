@@ -109,4 +109,11 @@ has_permission = {
 after_install = "athru_service.setup.install.after_install"
 after_migrate = "athru_service.setup.install.after_migrate"
 
+jinja = {
+	"methods": [
+		"athru_service.athru_service.utils.print_helpers.company_header_html",
+		"athru_service.athru_service.utils.print_helpers.company_letter_head",
+	],
+}
+
 fixtures = []
