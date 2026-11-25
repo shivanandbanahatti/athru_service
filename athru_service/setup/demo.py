@@ -72,7 +72,7 @@ def load_demo_seed():
 		).insert(ignore_permissions=True)
 
 	if frappe.db.exists("DocType", "HD Ticket"):
-		from athru_service.athru_service.utils.hd_ticket import create_installation_ticket
+		from athru_service.service_management.utils.hd_ticket import create_installation_ticket
 
 		existing = frappe.db.exists(
 			"HD Ticket", {"custom_machine_installation": mi_name, "ticket_type": "Breakdown"}

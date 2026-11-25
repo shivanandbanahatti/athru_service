@@ -1,5 +1,5 @@
 app_name = "athru_service"
-app_title = "Athru Service"
+app_title = "Service Management"
 app_publisher = "Athru"
 app_description = "Brand-neutral field service framework for ETO/MTO equipment companies"
 app_email = "support@athrutec.com"
@@ -12,7 +12,7 @@ add_to_apps_screen = [
 	{
 		"name": "athru_service",
 		"logo": "/assets/athru_service/images/athru_service.svg",
-		"title": "Athru Service",
+		"title": "Service Management",
 		"route": "/athru-service",
 	}
 ]
@@ -42,39 +42,39 @@ doctype_js = {
 
 doc_events = {
 	"HD Ticket": {
-		"before_insert": "athru_service.athru_service.utils.hd_ticket.before_insert",
-		"validate": "athru_service.athru_service.utils.hd_ticket.validate",
-		"on_update": "athru_service.athru_service.utils.hd_ticket.on_update",
+		"before_insert": "athru_service.service_management.utils.hd_ticket.before_insert",
+		"validate": "athru_service.service_management.utils.hd_ticket.validate",
+		"on_update": "athru_service.service_management.utils.hd_ticket.on_update",
 	},
 	"Service Report": {
-		"on_submit": "athru_service.athru_service.doctype.service_report.service_report.on_submit",
-		"on_cancel": "athru_service.athru_service.doctype.service_report.service_report.on_cancel",
+		"on_submit": "athru_service.service_management.doctype.service_report.service_report.on_submit",
+		"on_cancel": "athru_service.service_management.doctype.service_report.service_report.on_cancel",
 	},
 	"Installation Report": {
-		"on_submit": "athru_service.athru_service.doctype.installation_report.installation_report.on_submit",
-		"on_cancel": "athru_service.athru_service.doctype.installation_report.installation_report.on_cancel",
+		"on_submit": "athru_service.service_management.doctype.installation_report.installation_report.on_submit",
+		"on_cancel": "athru_service.service_management.doctype.installation_report.installation_report.on_cancel",
 	},
 	"Service Contract": {
-		"validate": "athru_service.athru_service.doctype.service_contract.service_contract.validate",
-		"on_submit": "athru_service.athru_service.doctype.service_contract.service_contract.on_submit",
-		"on_cancel": "athru_service.athru_service.doctype.service_contract.service_contract.on_cancel",
+		"validate": "athru_service.service_management.doctype.service_contract.service_contract.validate",
+		"on_submit": "athru_service.service_management.doctype.service_contract.service_contract.on_submit",
+		"on_cancel": "athru_service.service_management.doctype.service_contract.service_contract.on_cancel",
 	},
 	"Checklist Response": {
-		"before_insert": "athru_service.athru_service.doctype.checklist_response.checklist_response.before_insert_load_template",
-		"validate": "athru_service.athru_service.doctype.checklist_response.checklist_response.validate_doc",
+		"before_insert": "athru_service.service_management.doctype.checklist_response.checklist_response.before_insert_load_template",
+		"validate": "athru_service.service_management.doctype.checklist_response.checklist_response.validate_doc",
 	},
 	"Machine Installation": {
-		"validate": "athru_service.athru_service.doctype.machine_installation.machine_installation.validate",
-		"on_update": "athru_service.athru_service.doctype.machine_installation.machine_installation.on_update",
+		"validate": "athru_service.service_management.doctype.machine_installation.machine_installation.validate",
+		"on_update": "athru_service.service_management.doctype.machine_installation.machine_installation.on_update",
 	},
 	"Equipment Activity": {
-		"on_update": "athru_service.athru_service.doctype.equipment_activity.equipment_activity.on_update",
-		"after_insert": "athru_service.athru_service.doctype.equipment_activity.equipment_activity.after_insert",
+		"on_update": "athru_service.service_management.doctype.equipment_activity.equipment_activity.on_update",
+		"after_insert": "athru_service.service_management.doctype.equipment_activity.equipment_activity.after_insert",
 	},
 	"Maintenance Visit": {
-		"before_insert": "athru_service.athru_service.utils.maintenance_visit.before_insert",
-		"on_submit": "athru_service.athru_service.utils.maintenance_visit.on_submit",
-		"on_cancel": "athru_service.athru_service.utils.maintenance_visit.on_cancel",
+		"before_insert": "athru_service.service_management.utils.maintenance_visit.before_insert",
+		"on_submit": "athru_service.service_management.utils.maintenance_visit.on_submit",
+		"on_cancel": "athru_service.service_management.utils.maintenance_visit.on_cancel",
 	},
 	"Quotation": {
 		"on_submit": "athru_service.overrides.quotation.on_submit",
@@ -92,8 +92,8 @@ doc_events = {
 
 scheduler_events = {
 	"daily": [
-		"athru_service.athru_service.doctype.machine_installation.machine_installation.refresh_warranty_status",
-		"athru_service.athru_service.doctype.service_contract.service_contract.create_renewal_followups",
+		"athru_service.service_management.doctype.machine_installation.machine_installation.refresh_warranty_status",
+		"athru_service.service_management.doctype.service_contract.service_contract.create_renewal_followups",
 	],
 }
 
@@ -111,8 +111,8 @@ after_migrate = "athru_service.setup.install.after_migrate"
 
 jinja = {
 	"methods": [
-		"athru_service.athru_service.utils.print_helpers.company_header_html",
-		"athru_service.athru_service.utils.print_helpers.company_letter_head",
+		"athru_service.service_management.utils.print_helpers.company_header_html",
+		"athru_service.service_management.utils.print_helpers.company_letter_head",
 	],
 }
 

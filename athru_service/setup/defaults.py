@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import frappe
 
-from athru_service.athru_service.utils.hd_ticket import ensure_ticket_types
+from athru_service.service_management.utils.hd_ticket import ensure_ticket_types
 
 ROLES = [
 	"Service Manager",
