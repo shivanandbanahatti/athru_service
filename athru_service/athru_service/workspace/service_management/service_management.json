@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Athru Service</span>\",\"col\":12}},{\"id\":\"spa\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Athru Service SPA\",\"col\":3}},{\"id\":\"mi\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Machine Installation\",\"col\":3}},{\"id\":\"ea\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Equipment Activity\",\"col\":3}},{\"id\":\"sr\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Report\",\"col\":3}},{\"id\":\"ir\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Installation Report\",\"col\":3}},{\"id\":\"scon\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Contract\",\"col\":3}},{\"id\":\"pr\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Problem Record\",\"col\":3}},{\"id\":\"settings\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Athru Service Settings\",\"col\":3}}]",
+ "content": "[{\"id\":\"header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Service Management</span>\",\"col\":12}},{\"id\":\"spa\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Console\",\"col\":3}},{\"id\":\"mi\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Machine Installation\",\"col\":3}},{\"id\":\"ea\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Equipment Activity\",\"col\":3}},{\"id\":\"sr\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Report\",\"col\":3}},{\"id\":\"ir\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Installation Report\",\"col\":3}},{\"id\":\"scon\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Contract\",\"col\":3}},{\"id\":\"ler\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Late Entry Request\",\"col\":3}},{\"id\":\"cfb\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customer Feedback\",\"col\":3}},{\"id\":\"fv\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Field Visit\",\"col\":3}},{\"id\":\"car\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Corrective Action Report\",\"col\":3}},{\"id\":\"pr\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Problem Record\",\"col\":3}},{\"id\":\"settings\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Settings\",\"col\":3}}]",
  "creation": "2026-09-20 12:00:00.000000",
  "custom_blocks": [],
  "docstatus": 0,
@@ -10,7 +10,7 @@
  "icon": "tool",
  "idx": 0,
  "is_hidden": 0,
- "label": "Athru Service",
+ "label": "Service Management",
  "links": [
   {
    "hidden": 0,
@@ -64,8 +64,18 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Contracts & Knowledge",
-   "link_count": 3,
+   "label": "Service Contract",
+   "link_count": 0,
+   "link_to": "Service Contract",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Field Force & Feedback",
+   "link_count": 4,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -73,12 +83,51 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Service Contract",
+   "label": "Late Entry Request",
    "link_count": 0,
-   "link_to": "Service Contract",
+   "link_to": "Late Entry Request",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Field Visit",
+   "link_count": 0,
+   "link_to": "Field Visit",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Customer Feedback",
+   "link_count": 0,
+   "link_to": "Customer Feedback",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Corrective Action Report",
+   "link_count": 0,
+   "link_to": "Corrective Action Report",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Contracts & Knowledge",
+   "link_count": 3,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
   },
   {
    "hidden": 0,
@@ -103,8 +152,18 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Checklist Template",
+   "link_count": 0,
+   "link_to": "Checklist Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Configuration",
-   "link_count": 4,
+   "link_count": 2,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -112,7 +171,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Athru Service Settings",
+   "label": "Service Settings",
    "link_count": 0,
    "link_to": "Athru Service Settings",
    "link_type": "DocType",
@@ -128,22 +187,12 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Checklist Template",
-   "link_count": 0,
-   "link_to": "Checklist Template",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
   }
  ],
- "modified": "2026-09-20 14:30:00.000000",
+ "modified": "2026-11-25 00:00:00.000000",
  "modified_by": "Administrator",
  "module": "Athru Service",
- "name": "Athru Service",
+ "name": "Service Management",
  "number_cards": [],
  "owner": "Administrator",
  "parent_page": "",
@@ -156,7 +205,7 @@
   {
    "color": "Blue",
    "doc_view": "",
-   "label": "Athru Service SPA",
+   "label": "Service Console",
    "link_to": "/athru-service",
    "type": "URL"
   },
@@ -196,6 +245,34 @@
    "type": "DocType"
   },
   {
+   "color": "Yellow",
+   "doc_view": "List",
+   "label": "Late Entry Request",
+   "link_to": "Late Entry Request",
+   "type": "DocType"
+  },
+  {
+   "color": "Pink",
+   "doc_view": "List",
+   "label": "Customer Feedback",
+   "link_to": "Customer Feedback",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "List",
+   "label": "Field Visit",
+   "link_to": "Field Visit",
+   "type": "DocType"
+  },
+  {
+   "color": "Red",
+   "doc_view": "List",
+   "label": "Corrective Action Report",
+   "link_to": "Corrective Action Report",
+   "type": "DocType"
+  },
+  {
    "color": "Gray",
    "doc_view": "List",
    "label": "Problem Record",
@@ -205,10 +282,10 @@
   {
    "color": "Gray",
    "doc_view": "",
-   "label": "Athru Service Settings",
+   "label": "Service Settings",
    "link_to": "Athru Service Settings",
    "type": "DocType"
   }
  ],
- "title": "Athru Service"
+ "title": "Service Management"
 }
