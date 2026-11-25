@@ -1,0 +1,215 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-11-25 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "amended_from",
+  "context_section",
+  "customer",
+  "machine_installation",
+  "hd_ticket",
+  "maintenance_visit",
+  "column_break_ctx_1",
+  "company",
+  "feedback_date",
+  "respondent_name",
+  "respondent_designation",
+  "ratings_section",
+  "overall_rating",
+  "response_time_rating",
+  "engineer_conduct_rating",
+  "column_break_rat_1",
+  "resolution_quality_rating",
+  "would_recommend",
+  "comments_section",
+  "comments"
+ ],
+ "fields": [
+  {
+   "default": "CFB-.YYYY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "no_copy": 1,
+   "options": "CFB-.YYYY.-",
+   "print_hide": 1,
+   "reqd": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Customer Feedback",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "context_section",
+   "fieldtype": "Section Break",
+   "label": "Context"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "machine_installation",
+   "fieldtype": "Link",
+   "label": "Machine Installation",
+   "options": "Machine Installation"
+  },
+  {
+   "fieldname": "hd_ticket",
+   "fieldtype": "Link",
+   "label": "Service Request (HD Ticket)",
+   "options": "HD Ticket"
+  },
+  {
+   "fieldname": "maintenance_visit",
+   "fieldtype": "Link",
+   "label": "Maintenance Visit",
+   "options": "Maintenance Visit"
+  },
+  {
+   "fieldname": "column_break_ctx_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "feedback_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Feedback Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "respondent_name",
+   "fieldtype": "Data",
+   "label": "Respondent Name"
+  },
+  {
+   "fieldname": "respondent_designation",
+   "fieldtype": "Data",
+   "label": "Respondent Designation"
+  },
+  {
+   "fieldname": "ratings_section",
+   "fieldtype": "Section Break",
+   "label": "Ratings"
+  },
+  {
+   "fieldname": "overall_rating",
+   "fieldtype": "Rating",
+   "in_list_view": 1,
+   "label": "Overall Satisfaction"
+  },
+  {
+   "fieldname": "response_time_rating",
+   "fieldtype": "Rating",
+   "label": "Response Time"
+  },
+  {
+   "fieldname": "engineer_conduct_rating",
+   "fieldtype": "Rating",
+   "label": "Engineer Conduct"
+  },
+  {
+   "fieldname": "column_break_rat_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "resolution_quality_rating",
+   "fieldtype": "Rating",
+   "label": "Resolution Quality"
+  },
+  {
+   "default": "0",
+   "fieldname": "would_recommend",
+   "fieldtype": "Check",
+   "label": "Would Recommend Us"
+  },
+  {
+   "fieldname": "comments_section",
+   "fieldtype": "Section Break",
+   "label": "Comments"
+  },
+  {
+   "fieldname": "comments",
+   "fieldtype": "Text",
+   "label": "Comments"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-11-25 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Athru Service",
+ "name": "Customer Feedback",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Service Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Service Engineer",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

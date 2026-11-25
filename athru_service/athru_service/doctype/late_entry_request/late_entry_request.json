@@ -1,0 +1,224 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-11-25 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "amended_from",
+  "request_section",
+  "employee",
+  "employee_name",
+  "department",
+  "company",
+  "column_break_req_1",
+  "late_entry_date",
+  "expected_time",
+  "actual_time",
+  "reason",
+  "approval_section",
+  "workflow_state",
+  "status",
+  "approver",
+  "column_break_appr_1",
+  "approval_remarks",
+  "attendance_processed"
+ ],
+ "fields": [
+  {
+   "default": "LER-.YYYY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "no_copy": 1,
+   "options": "LER-.YYYY.-",
+   "print_hide": 1,
+   "reqd": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Late Entry Request",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "request_section",
+   "fieldtype": "Section Break",
+   "label": "Request"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.department",
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.company",
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_req_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "late_entry_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Late Entry Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "expected_time",
+   "fieldtype": "Time",
+   "label": "Expected Reporting Time"
+  },
+  {
+   "fieldname": "actual_time",
+   "fieldtype": "Time",
+   "label": "Actual Reporting Time"
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Small Text",
+   "label": "Reason",
+   "reqd": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "approval_section",
+   "fieldtype": "Section Break",
+   "label": "Approval"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "workflow_state",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Workflow State",
+   "no_copy": 1,
+   "options": "Workflow State",
+   "read_only": 1
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Pending\nApproved\nRejected\nCancelled",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approver",
+   "fieldtype": "Link",
+   "label": "Approver",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_appr_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "approval_remarks",
+   "fieldtype": "Small Text",
+   "label": "Approval Remarks"
+  },
+  {
+   "default": "0",
+   "fieldname": "attendance_processed",
+   "fieldtype": "Check",
+   "label": "Attendance Processed",
+   "no_copy": 1,
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-11-25 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Athru Service",
+ "name": "Late Entry Request",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Service Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Service Engineer",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

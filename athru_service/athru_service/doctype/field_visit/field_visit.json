@@ -1,0 +1,279 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-11-25 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "amended_from",
+  "details_section",
+  "visit_type",
+  "visited_by",
+  "company",
+  "column_break_det_1",
+  "visit_date",
+  "visit_start_time",
+  "visit_end_time",
+  "party_section",
+  "party_type",
+  "customer",
+  "lead",
+  "column_break_party_1",
+  "contact_person",
+  "location",
+  "travel_section",
+  "travel_start_datetime",
+  "travel_end_datetime",
+  "content_section",
+  "purpose",
+  "discussion_summary",
+  "next_follow_up_date",
+  "approval_section",
+  "workflow_state",
+  "status",
+  "approver"
+ ],
+ "fields": [
+  {
+   "default": "FV-.YYYY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "no_copy": 1,
+   "options": "FV-.YYYY.-",
+   "print_hide": 1,
+   "reqd": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Field Visit",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "details_section",
+   "fieldtype": "Section Break",
+   "label": "Visit Details"
+  },
+  {
+   "default": "Sales",
+   "fieldname": "visit_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Visit Type",
+   "options": "Sales\nMarketing\nCourtesy\nFollow-up\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "visited_by",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Visited By",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_det_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "visit_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Visit Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "visit_start_time",
+   "fieldtype": "Time",
+   "label": "Start Time"
+  },
+  {
+   "fieldname": "visit_end_time",
+   "fieldtype": "Time",
+   "label": "End Time"
+  },
+  {
+   "fieldname": "party_section",
+   "fieldtype": "Section Break",
+   "label": "Party"
+  },
+  {
+   "default": "Customer",
+   "fieldname": "party_type",
+   "fieldtype": "Select",
+   "label": "Party Type",
+   "options": "Customer\nLead"
+  },
+  {
+   "depends_on": "eval:doc.party_type=='Customer'",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "depends_on": "eval:doc.party_type=='Lead'",
+   "fieldname": "lead",
+   "fieldtype": "Link",
+   "label": "Lead",
+   "options": "Lead"
+  },
+  {
+   "fieldname": "column_break_party_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contact_person",
+   "fieldtype": "Data",
+   "label": "Contact Person"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "travel_section",
+   "fieldtype": "Section Break",
+   "label": "Travel"
+  },
+  {
+   "fieldname": "travel_start_datetime",
+   "fieldtype": "Datetime",
+   "label": "Travel Start"
+  },
+  {
+   "fieldname": "travel_end_datetime",
+   "fieldtype": "Datetime",
+   "label": "Travel End"
+  },
+  {
+   "fieldname": "content_section",
+   "fieldtype": "Section Break",
+   "label": "Discussion"
+  },
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Small Text",
+   "label": "Purpose",
+   "reqd": 1
+  },
+  {
+   "fieldname": "discussion_summary",
+   "fieldtype": "Text Editor",
+   "label": "Discussion Summary"
+  },
+  {
+   "fieldname": "next_follow_up_date",
+   "fieldtype": "Date",
+   "label": "Next Follow-up Date"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "approval_section",
+   "fieldtype": "Section Break",
+   "label": "Approval"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "workflow_state",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Workflow State",
+   "no_copy": 1,
+   "options": "Workflow State",
+   "read_only": 1
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Pending\nApproved\nRejected\nCancelled",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approver",
+   "fieldtype": "Link",
+   "label": "Approver",
+   "options": "User",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-11-25 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Athru Service",
+ "name": "Field Visit",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Service Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Service Engineer",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
